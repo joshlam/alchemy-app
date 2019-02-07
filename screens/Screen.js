@@ -658,6 +658,8 @@ export default class Screen extends React.Component {
           ? 1 - currentCategory
           : currentCategory;
 
+        playSound(`unlock_${idFor(transmutation)}`, 'mp3');
+
         this.fetchTransmutations()
           .then(() => {
             this.setState({
@@ -685,6 +687,8 @@ export default class Screen extends React.Component {
       }
     }).then(response => response.json())
       .then(json => {
+        playSound(`transmute_${idFor(transmutation)}`, 'mp3');
+
         this.setState({mana: json.mana, [transmutation]: 'COMPLETE'});
       });
   }
@@ -700,6 +704,8 @@ export default class Screen extends React.Component {
       }
     }).then(response => response.json())
       .then(alchemist => {
+        playSound('level_up_accept');
+
         this.setState({
           rank: normalizeRank(alchemist.rank),
           level: alchemist.level,
@@ -1488,16 +1494,22 @@ class AlchemistDisplay extends React.PureComponent {
   }
 }
 
-const LevelUp = ({onLevelUp}) => {
-  return (
-    <TouchableOpacity style={styles.levelUp} onPress={onLevelUp}>
-      <Image
+class LevelUp extends React.PureComponent {
+  componentDidMount() {
+    playSound('level_up_alert');
+  }
+
+  render() {
+    return (
+      <TouchableOpacity style={styles.levelUp} onPress={this.props.onLevelUp}>
+        <Image
         style={styles.levelUpImage}
         source={require('../assets/images/level-up.png')}
-      />
-    </TouchableOpacity>
-  );
-};
+        />
+      </TouchableOpacity>
+    );
+  }
+}
 
 const HomeButton = ({onPress}) => {
   return (

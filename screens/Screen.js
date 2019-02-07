@@ -11,6 +11,7 @@ import {
   View,
 } from 'react-native';
 import * as Progress from 'react-native-progress';
+import Sound from 'react-native-sound';
 import Swiper from 'react-native-swiper';
 
 const styles = StyleSheet.create({
@@ -123,7 +124,12 @@ const styles = StyleSheet.create({
     height: 90,
     width: 90
   },
-  transmutationTree: {
+  mindTransmutationTree: {
+    alignItems: 'flex-end',
+    flexDirection: 'row',
+    justifyContent: 'space-between'
+  },
+  bodyTransmutationTree: {
     alignItems: 'center',
     justifyContent: 'space-between',
     height: '90%'
@@ -410,6 +416,8 @@ const ICONS = {
   }
 }
 
+let backgroundMusic;
+
 export default class Screen extends React.Component {
   constructor(props) {
     super(props);
@@ -445,6 +453,11 @@ export default class Screen extends React.Component {
     this.levelUp = this.levelUp.bind(this);
     this.transmute = this.transmute.bind(this);
     this.unlock = this.unlock.bind(this);
+    this.onPageChange = this.onPageChange.bind(this);
+  }
+
+  componentDidMount() {
+    loopSound('login', 'mp3');
   }
 
   handleEmailChange(email) {
@@ -468,10 +481,14 @@ export default class Screen extends React.Component {
     }).then(response => response.json())
       .then(json => {
         if (!json.auth_token) {
+          playSound('login_incorrect');
+
           this.setState({displayLoginError: true});
 
           return;
         }
+
+        playSound('login_correct');
 
         this.setState({
           authToken: json.auth_token,
@@ -479,6 +496,8 @@ export default class Screen extends React.Component {
         });
 
         this.fetchAlchemist().then(() => {
+          loopSound('home');
+
           this.setState({
             previousScreen: this.state.screen,
             screen: 'Home',
@@ -547,6 +566,8 @@ export default class Screen extends React.Component {
   openMindTransmutations() {
     this.fetchTransmutations()
       .then(() => {
+        loopSound('transmutations');
+
         this.setState({
           transmutationCategory: 0,
           previousScreen: this.state.screen,
@@ -558,6 +579,8 @@ export default class Screen extends React.Component {
   openBodyTransmutations() {
     this.fetchTransmutations()
       .then(() => {
+        loopSound('transmutations');
+
         this.setState({
           transmutationCategory: 1,
           previousScreen: this.state.screen,
@@ -578,18 +601,28 @@ export default class Screen extends React.Component {
   }
 
   openHome() {
+    playSound('button_home');
+
+    loopSound('home');
+
     this.setState({previousScreen: this.state.screen, screen: 'Home'});
   }
 
   openTips() {
+    playSound('button_tips');
+
     this.setState({previousScreen: this.state.screen, screen: 'Tips'});
   }
 
   openMore() {
+    playSound('button_more');
+
     this.setState({previousScreen: this.state.screen, screen: 'More'});
   }
 
   returnToTransmutations() {
+    playSound('button_back');
+
     this.setState({
       previousScreen: this.state.screen,
       screen: 'Transmutations'
@@ -597,6 +630,8 @@ export default class Screen extends React.Component {
   }
 
   goBack() {
+    playSound('button_back');
+
     this.setState({
       previousScreen: this.state.screen,
       screen: this.state.previousScreen
@@ -678,8 +713,18 @@ export default class Screen extends React.Component {
       });
   }
 
+  onPageChange(bodyTransmutations) {
+    if (bodyTransmutations) {
+      playSound('turn_right_to_body');
+    } else {
+      playSound('turn_left_to_mind');
+    }
+  }
+
   render() {
     if (!this.state.signedIn) {
+
+
       return (
         <LoginScreen
           email={this.state.email}
@@ -728,6 +773,7 @@ export default class Screen extends React.Component {
           level={level}
           mana={mana}
           onLevelUp={this.levelUp}
+          onPageChange={this.onPageChange}
           onHomePress={this.openHome}
           onTransmutationPress={this.openTransmutation}
           category={transmutationCategory}
@@ -896,6 +942,7 @@ const Transmutations = ({
   level,
   mana,
   onLevelUp,
+  onPageChange,
   onHomePress,
   onTransmutationPress,
   category,
@@ -920,7 +967,12 @@ const Transmutations = ({
   yogaStatus
 }) => {
   return (
-    <Swiper loop={false} showsButtons={false} index={category}>
+    <Swiper
+      loop={false}
+      showsButtons={false}
+      index={category}
+      onIndexChanged={onPageChange}
+    >
       <MindTransmutations
         rank={rank}
         level={level}
@@ -992,51 +1044,68 @@ const MindTransmutations = ({
           isUnlocking={isUnlocking}
           onLevelUp={onLevelUp}
         />
-        <Transmutation
-          name={'Gratitude'}
-          status={gratitudeStatus}
-          onPress={onTransmutationPress}
-        />
-        <Transmutation
-          name={'Connect'}
-          status={connectStatus}
-          onPress={onTransmutationPress}
-        />
-        <Transmutation
-          name={'Values'}
-          status={valuesStatus}
-          onPress={onTransmutationPress}
-        />
-        <Transmutation
-          name={'Affirmations'}
-          status={affirmationsStatus}
-          onPress={onTransmutationPress}
-        />
-        <Transmutation
-          name={'Reading'}
-          status={readingStatus}
-          onPress={onTransmutationPress}
-        />
-        <Transmutation
-          name={'Passion'}
-          status={passionStatus}
-          onPress={onTransmutationPress}
-        />
-        <Transmutation
-          name={'Mindfulness'}
-          status={mindfulnessStatus}
-          onPress={onTransmutationPress}
-        />
-        <Transmutation
-          name={'Visualization'}
-          status={visualizationStatus}
-          onPress={onTransmutationPress}
-        />
-        <Transmutation
-          name={'Meditation'}
-          status={meditationStatus}
-          onPress={onTransmutationPress}
-        />
+        <View style={styles.mindTransmutationTree}>
+          <View style={[
+            styles.transmutationColumn,
+            styles.transmutationColumn1
+          ]}>
+            <Transmutation
+              name={'Reading'}
+              status={readingStatus}
+              onPress={onTransmutationPress}
+            />
+            <Transmutation
+              name={'Connect'}
+              status={connectStatus}
+              onPress={onTransmutationPress}
+            />
+          </View>
+          <View style={[
+            styles.transmutationColumn,
+            styles.transmutationColumn2
+          ]}>
+            <Transmutation
+              name={'Meditation'}
+              status={meditationStatus}
+              onPress={onTransmutationPress}
+            />
+            <Transmutation
+              name={'Mindfulness'}
+              status={mindfulnessStatus}
+              onPress={onTransmutationPress}
+            />
+            <Transmutation
+              name={'Visualization'}
+              status={visualizationStatus}
+              onPress={onTransmutationPress}
+            />
+            <Transmutation
+              name={'Affirmations'}
+              status={affirmationsStatus}
+              onPress={onTransmutationPress}
+            />
+            <Transmutation
+              name={'Gratitude'}
+              status={gratitudeStatus}
+              onPress={onTransmutationPress}
+            />
+          </View>
+          <View style={[
+            styles.transmutationColumn,
+            styles.transmutationColumn3
+          ]}>
+            <Transmutation
+              name={'Passion'}
+              status={passionStatus}
+              onPress={onTransmutationPress}
+            />
+            <Transmutation
+              name={'Values'}
+              status={valuesStatus}
+              onPress={onTransmutationPress}
+            />
+          </View>
+        </View>
         <HomeButton onPress={onHomePress} />
       </ImageBackground>
     </View>
@@ -1074,7 +1143,7 @@ const BodyTransmutations = ({
           isUnlocking={isUnlocking}
           onLevelUp={onLevelUp}
         />
-        <View style={styles.transmutationTree}>
+        <View style={styles.bodyTransmutationTree}>
           <View style={[styles.transmutationRow, styles.transmutationRow1]}>
             <Transmutation
               name={'Yoga'}
@@ -1498,4 +1567,22 @@ function normalizeRank(rank) {
     case 'acolyte': return 'Acolyte';
     default: return 'Apprentice';
   }
+}
+
+function playSound(file, extension = 'wav') {
+  const sound = new Sound(
+    `${file}.${extension}`,
+    Sound.MAIN_BUNDLE,
+    error => sound.play(() => sound.release())
+  );
+}
+
+function loopSound(file, extension = 'wav') {
+  if (backgroundMusic) backgroundMusic.stop().release();
+
+  backgroundMusic = new Sound(
+    `${file}.${extension}`,
+    Sound.MAIN_BUNDLE,
+    error => backgroundMusic.setNumberOfLoops(-1).play()
+  );
 }

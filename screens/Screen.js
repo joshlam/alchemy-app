@@ -211,10 +211,10 @@ const styles = StyleSheet.create({
   sunlight: {
 
   },
-  goodFood: {
+  goodfood: {
 
   },
-  junkFood: {
+  junkfood: {
 
   },
   yoga: {
@@ -1561,8 +1561,8 @@ function categoryFor(transmutation) {
 }
 
 function idFor(transmutation) {
-  if (transmutation === 'Good Food') return 'goodFood';
-  if (transmutation === 'Junk Food') return 'junkFood';
+  if (transmutation === 'Good Food') return 'goodfood';
+  if (transmutation === 'Junk Food') return 'junkfood';
 
   return transmutation.toLowerCase();
 }

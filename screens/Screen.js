@@ -1,9 +1,11 @@
 import React from 'react';
 import {
   Alert,
+  AsyncStorage,
   Button,
   Image,
   ImageBackground,
+  ScrollView,
   StyleSheet,
   Text,
   TextInput,
@@ -33,7 +35,7 @@ const styles = StyleSheet.create({
   },
   loginForm: {
     borderRadius: 4,
-    height: '6%',
+    height: 40,
     width: '67%'
   },
   loginInput: {
@@ -66,7 +68,7 @@ const styles = StyleSheet.create({
   },
   alchemistDisplayContainer: {
     flexDirection: 'row',
-    height: '15%',
+    height: 120,
     width: '100%',
     justifyContent: 'flex-end',
     marginTop: 10,
@@ -224,12 +226,11 @@ const styles = StyleSheet.create({
     padding: 10
   },
   transmutationHeader: {
-    height: 125
+    height: 80
   },
   transmutationTop: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
-    marginTop: 12
+    justifyContent: 'space-between'
   },
   backButton: {
     height: 37,
@@ -251,17 +252,26 @@ const styles = StyleSheet.create({
   },
   transmutationTitle: {
     alignItems: 'center',
-    marginTop: -24
+    justifyContent: 'center'
   },
   transmutationTitleText: {
+    color: 'black',
     fontSize: 54,
     fontWeight: '600',
     textAlign: 'center'
   },
+  transmutationIcon: {
+    alignItems: 'center'
+  },
+  transmutationIconImage: {
+    height: 120,
+    width: 120
+  },
   transmutationBody: {
-    marginTop: 25
+
   },
   transmutationInstructions: {
+    color: 'black',
     fontSize: 32,
     textAlign: 'center'
   },
@@ -277,13 +287,15 @@ const styles = StyleSheet.create({
   effectsTitle: {
     borderBottomColor: 'black',
     borderBottomWidth: 2,
-    width: '32%'
+    width: 135
   },
   effectsTitleText: {
-    marginLeft: 5,
-    fontSize: 42
+    color: 'black',
+    fontSize: 42,
+    marginLeft: 5
   },
   transmutationText: {
+    color: 'black',
     fontSize: 20
   },
   expandTransmutation: {
@@ -295,7 +307,7 @@ const styles = StyleSheet.create({
   expandButton: {
     marginRight: -10,
     marginLeft: 10,
-    width: '34%'
+    width: 130
   },
   expandButtonImage: {
     height: 45,
@@ -305,6 +317,7 @@ const styles = StyleSheet.create({
     marginTop: 10
   },
   referencesHeader: {
+    color: 'black',
     fontSize: 36
   }
 });
@@ -423,8 +436,8 @@ export default class Screen extends React.Component {
     super(props);
 
     this.state = {
-      email: 'joh641@gmail.com',
-      password: 'testpass',
+      email: '',
+      password: '',
       displayLoginError: false,
       screen: 'Login',
       signedIn: false,
@@ -458,6 +471,28 @@ export default class Screen extends React.Component {
 
   componentDidMount() {
     loopSound('login', 'mp3');
+
+    this.retrieveLogin();
+  }
+
+  async retrieveLogin() {
+    try {
+      const email = await AsyncStorage.getItem('@Alchemy:email');
+      const password = await AsyncStorage.getItem('@Alchemy:password');
+
+      this.setState({email, password});
+    } catch (error) {
+
+    }
+  }
+
+  async storeLogin(email, password) {
+    try {
+      await AsyncStorage.setItem('@Alchemy:email', email);
+      await AsyncStorage.setItem('@Alchemy:password', password);
+    } catch (error) {
+
+    }
   }
 
   handleEmailChange(email) {
@@ -469,15 +504,14 @@ export default class Screen extends React.Component {
   }
 
   handleSignIn() {
+    const {email, password} = this.state;
+
     fetch('http://alchemy-api.herokuapp.com/api/authenticate', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({
-        email: this.state.email,
-        password: this.state.password
-      })
+      body: JSON.stringify({email, password})
     }).then(response => response.json())
       .then(json => {
         if (!json.auth_token) {
@@ -504,6 +538,8 @@ export default class Screen extends React.Component {
             signedIn: true
           });
         });
+
+        this.storeLogin(email, password);
       });
   }
 
@@ -807,10 +843,14 @@ export default class Screen extends React.Component {
     }
 
     if (screen === 'Transmutation') {
+      const name = transmutation.name;
+      const status = this.state[name];
+
       return (
         <TransmutationPage
           transmutation={transmutation}
-          status={this.state[transmutation.name]}
+          status={status}
+          icon={ICONS[name][status]}
           isUnlocking={isUnlocking}
           onTransmutations={this.returnToTransmutations}
           onUnlock={this.unlock}
@@ -822,12 +862,23 @@ export default class Screen extends React.Component {
     }
 
     if (screen === 'Tips') {
-      return <Tips tips={transmutation.tips} onBack={this.goBack} />;
+      const name = transmutation.name;
+
+      return (
+        <Tips
+          icon={ICONS[name][this.state[name]]}
+          tips={transmutation.tips}
+          onBack={this.goBack}
+        />
+      );
     }
 
     if (screen === 'More') {
+      const name = transmutation.name;
+
       return (
         <More
+          icon={ICONS[name][this.state[name]]}
           content={transmutation.more}
           references={transmutation.references}
           onBack={this.goBack}
@@ -1341,6 +1392,7 @@ class TransmutationPage extends React.PureComponent {
   render() {
     const {
       transmutation,
+      icon,
       onTransmutations,
       openTips,
       openMore
@@ -1356,6 +1408,7 @@ class TransmutationPage extends React.PureComponent {
       <TransmutationTemplate
         onBack={onTransmutations}
         title={transmutation.name}
+        icon={icon}
         headerContent={mana}
       >
         <Text style={styles.transmutationInstructions}>
@@ -1389,7 +1442,7 @@ class TransmutationPage extends React.PureComponent {
 
 class TransmutationTemplate extends React.PureComponent {
   render() {
-    const {onBack, title, headerContent, children } = this.props;
+    const {onBack, title, icon, headerContent, children } = this.props;
 
     return (
       <View>
@@ -1400,6 +1453,12 @@ class TransmutationTemplate extends React.PureComponent {
           <TransmutationHeader onBack={onBack} title={title}>
             {headerContent}
           </TransmutationHeader>
+          <View style={styles.transmutationIcon}>
+            <Image
+              style={styles.transmutationIconImage}
+              source={icon}
+            />
+          </View>
           <View style={styles.transmutationBody}>{children}</View>
         </ImageBackground>
       </View>
@@ -1407,22 +1466,34 @@ class TransmutationTemplate extends React.PureComponent {
   }
 }
 
-const Tips = ({tips, onBack}) => {
+const Tips = ({icon, tips, onBack}) => {
   return (
-    <TransmutationTemplate onBack={onBack} title={'Tips'}>
-      <Text style={styles.transmutationText}>{tips}</Text>
+    <TransmutationTemplate
+      onBack={onBack}
+      title={'Tips'}
+      icon={icon}
+    >
+      <ScrollView>
+        <Text style={styles.transmutationText}>{tips}</Text>
+      </ScrollView>
     </TransmutationTemplate>
   );
 };
 
-const More = ({content, references, onBack}) => {
+const More = ({icon, content, references, onBack}) => {
   return (
-    <TransmutationTemplate onBack={onBack} title={'More...'}>
-      <Text style={styles.transmutationText}>{content}</Text>
-      <View style={styles.referencesSection}>
-        <Text style={styles.referencesHeader}>References</Text>
-        <Text style={styles.transmutationText}>{references}</Text>
-      </View>
+    <TransmutationTemplate
+      onBack={onBack}
+      title={'More...'}
+      icon={icon}
+    >
+      <ScrollView>
+        <Text style={styles.transmutationText}>{content}</Text>
+        <View style={styles.referencesSection}>
+          <Text style={styles.referencesHeader}>References</Text>
+          <Text style={styles.transmutationText}>{references}</Text>
+        </View>
+      </ScrollView>
     </TransmutationTemplate>
   );
 };

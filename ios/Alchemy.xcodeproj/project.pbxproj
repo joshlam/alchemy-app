@@ -5,6 +5,7 @@
 	};
 	objectVersion = 46;
 	objects = {
+
 /* Begin PBXBuildFile section */
 		00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302AC1ABCB8CE00DB3ED1 /* libRCTActionSheet.a */; };
 		00C302E71ABCBA2D00DB3ED1 /* libRCTGeolocation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302BA1ABCB90400DB3ED1 /* libRCTGeolocation.a */; };
@@ -36,10 +37,58 @@
 		2DCD954D1E0B4F2C00145EB5 /* AlchemyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* AlchemyTests.m */; };
 		2DF0FFEE2056DD460020B375 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DAD3EA31DF850E9000B6D8A /* libReact.a */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
+		8CDA03857340460FA077FCBC /* libRNSound.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0CC64B73726748CA87EF372E /* libRNSound.a */; };
 		ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */; };
+		BAAC200F220CBC6B00527CDA /* login_incorrect.wav in Resources */ = {isa = PBXBuildFile; fileRef = BAAC1FDF220CBC6800527CDA /* login_incorrect.wav */; };
+		BAAC2010220CBC6B00527CDA /* turn_right_to_body.wav in Resources */ = {isa = PBXBuildFile; fileRef = BAAC1FE0220CBC6800527CDA /* turn_right_to_body.wav */; };
+		BAAC2011220CBC6B00527CDA /* level_up_accept.wav in Resources */ = {isa = PBXBuildFile; fileRef = BAAC1FE1220CBC6800527CDA /* level_up_accept.wav */; };
+		BAAC2012220CBC6B00527CDA /* transmute_meditation.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BAAC1FE2220CBC6800527CDA /* transmute_meditation.mp3 */; };
+		BAAC2013220CBC6B00527CDA /* unlock_fitness.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BAAC1FE3220CBC6800527CDA /* unlock_fitness.mp3 */; };
+		BAAC2014220CBC6B00527CDA /* button_tips.wav in Resources */ = {isa = PBXBuildFile; fileRef = BAAC1FE4220CBC6800527CDA /* button_tips.wav */; };
+		BAAC2015220CBC6B00527CDA /* transmute_sunlight.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BAAC1FE5220CBC6800527CDA /* transmute_sunlight.mp3 */; };
+		BAAC2016220CBC6B00527CDA /* unlock_affirmations.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BAAC1FE6220CBC6800527CDA /* unlock_affirmations.mp3 */; };
+		BAAC2017220CBC6B00527CDA /* transmute_supplement.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BAAC1FE7220CBC6800527CDA /* transmute_supplement.mp3 */; };
+		BAAC2018220CBC6B00527CDA /* transmute_fitness.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BAAC1FE8220CBC6800527CDA /* transmute_fitness.mp3 */; };
+		BAAC2019220CBC6B00527CDA /* unlock_connect.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BAAC1FE9220CBC6900527CDA /* unlock_connect.mp3 */; };
+		BAAC201A220CBC6B00527CDA /* unlock_meditation.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BAAC1FEA220CBC6900527CDA /* unlock_meditation.mp3 */; };
+		BAAC201B220CBC6B00527CDA /* unlock_values.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BAAC1FEB220CBC6900527CDA /* unlock_values.mp3 */; };
+		BAAC201C220CBC6B00527CDA /* level_up_alert.wav in Resources */ = {isa = PBXBuildFile; fileRef = BAAC1FEC220CBC6900527CDA /* level_up_alert.wav */; };
+		BAAC201D220CBC6B00527CDA /* button_back.wav in Resources */ = {isa = PBXBuildFile; fileRef = BAAC1FED220CBC6900527CDA /* button_back.wav */; };
+		BAAC201E220CBC6B00527CDA /* transmute_junkfood.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BAAC1FEE220CBC6900527CDA /* transmute_junkfood.mp3 */; };
+		BAAC201F220CBC6B00527CDA /* unlock_reading.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BAAC1FEF220CBC6900527CDA /* unlock_reading.mp3 */; };
+		BAAC2020220CBC6B00527CDA /* unlock_passion.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BAAC1FF0220CBC6900527CDA /* unlock_passion.mp3 */; };
+		BAAC2021220CBC6B00527CDA /* transmute_nature.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BAAC1FF1220CBC6900527CDA /* transmute_nature.mp3 */; };
+		BAAC2022220CBC6B00527CDA /* transmute_reading.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BAAC1FF2220CBC6900527CDA /* transmute_reading.mp3 */; };
+		BAAC2023220CBC6B00527CDA /* transmute_visualization.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BAAC1FF3220CBC6900527CDA /* transmute_visualization.mp3 */; };
+		BAAC2024220CBC6B00527CDA /* unlock_mindfulness.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BAAC1FF4220CBC6900527CDA /* unlock_mindfulness.mp3 */; };
+		BAAC2025220CBC6B00527CDA /* unlock_yoga.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BAAC1FF5220CBC6A00527CDA /* unlock_yoga.mp3 */; };
+		BAAC2026220CBC6B00527CDA /* turn_left_to_mind.wav in Resources */ = {isa = PBXBuildFile; fileRef = BAAC1FF6220CBC6A00527CDA /* turn_left_to_mind.wav */; };
+		BAAC2027220CBC6B00527CDA /* login_correct.wav in Resources */ = {isa = PBXBuildFile; fileRef = BAAC1FF7220CBC6A00527CDA /* login_correct.wav */; };
+		BAAC2028220CBC6B00527CDA /* transmute_gratitude.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BAAC1FF8220CBC6A00527CDA /* transmute_gratitude.mp3 */; };
+		BAAC2029220CBC6B00527CDA /* transmute_yoga.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BAAC1FF9220CBC6A00527CDA /* transmute_yoga.mp3 */; };
+		BAAC202A220CBC6B00527CDA /* button_home.wav in Resources */ = {isa = PBXBuildFile; fileRef = BAAC1FFA220CBC6A00527CDA /* button_home.wav */; };
+		BAAC202B220CBC6B00527CDA /* unlock_nature.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BAAC1FFB220CBC6A00527CDA /* unlock_nature.mp3 */; };
+		BAAC202C220CBC6B00527CDA /* daily_rewards.wav in Resources */ = {isa = PBXBuildFile; fileRef = BAAC1FFC220CBC6A00527CDA /* daily_rewards.wav */; };
+		BAAC202D220CBC6B00527CDA /* transmute_connect.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BAAC1FFD220CBC6A00527CDA /* transmute_connect.mp3 */; };
+		BAAC202E220CBC6B00527CDA /* unlock_sleep.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BAAC1FFE220CBC6A00527CDA /* unlock_sleep.mp3 */; };
+		BAAC202F220CBC6B00527CDA /* transmute_sleep.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BAAC1FFF220CBC6A00527CDA /* transmute_sleep.mp3 */; };
+		BAAC2030220CBC6B00527CDA /* transmute_values.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BAAC2000220CBC6A00527CDA /* transmute_values.mp3 */; };
+		BAAC2031220CBC6B00527CDA /* unlock_sunlight.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BAAC2001220CBC6A00527CDA /* unlock_sunlight.mp3 */; };
+		BAAC2032220CBC6B00527CDA /* transmute_passion.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BAAC2002220CBC6A00527CDA /* transmute_passion.mp3 */; };
+		BAAC2033220CBC6B00527CDA /* transmute_goodfood.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BAAC2003220CBC6B00527CDA /* transmute_goodfood.mp3 */; };
+		BAAC2034220CBC6B00527CDA /* unlock_junkfood.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BAAC2004220CBC6B00527CDA /* unlock_junkfood.mp3 */; };
+		BAAC2035220CBC6B00527CDA /* transmute_mindfulness.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BAAC2005220CBC6B00527CDA /* transmute_mindfulness.mp3 */; };
+		BAAC2036220CBC6B00527CDA /* transmutations.wav in Resources */ = {isa = PBXBuildFile; fileRef = BAAC2006220CBC6B00527CDA /* transmutations.wav */; };
+		BAAC2037220CBC6B00527CDA /* transmute_hydration.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BAAC2007220CBC6B00527CDA /* transmute_hydration.mp3 */; };
+		BAAC2038220CBC6B00527CDA /* transmute_affirmations.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BAAC2008220CBC6B00527CDA /* transmute_affirmations.mp3 */; };
+		BAAC2039220CBC6B00527CDA /* unlock_goodfood.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BAAC2009220CBC6B00527CDA /* unlock_goodfood.mp3 */; };
+		BAAC203A220CBC6B00527CDA /* unlock_supplement.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BAAC200A220CBC6B00527CDA /* unlock_supplement.mp3 */; };
+		BAAC203B220CBC6B00527CDA /* unlock_visualization.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BAAC200B220CBC6B00527CDA /* unlock_visualization.mp3 */; };
+		BAAC203C220CBC6B00527CDA /* login.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BAAC200C220CBC6B00527CDA /* login.mp3 */; };
+		BAAC203D220CBC6B00527CDA /* home.wav in Resources */ = {isa = PBXBuildFile; fileRef = BAAC200D220CBC6B00527CDA /* home.wav */; };
+		BAAC203E220CBC6B00527CDA /* button_more.wav in Resources */ = {isa = PBXBuildFile; fileRef = BAAC200E220CBC6B00527CDA /* button_more.wav */; };
 		ED297163215061F000B7C4FE /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED297162215061F000B7C4FE /* JavaScriptCore.framework */; };
 		ED2971652150620600B7C4FE /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED2971642150620600B7C4FE /* JavaScriptCore.framework */; };
-		8CDA03857340460FA077FCBC /* libRNSound.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0CC64B73726748CA87EF372E /* libRNSound.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -176,20 +225,6 @@
 			remoteGlobalIDString = 3D383D621EBD27B9005632C8;
 			remoteInfo = "double-conversion-tvOS";
 		};
-		2DF0FFEA2056DD460020B375 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 146833FF1AC3E56700842450 /* React.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 9936F3131F5F2E4B0010BF04;
-			remoteInfo = privatedata;
-		};
-		2DF0FFEC2056DD460020B375 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 146833FF1AC3E56700842450 /* React.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 9936F32F1F5F2E5B0010BF04;
-			remoteInfo = "privatedata-tvOS";
-		};
 		3DAD3E831DF850E9000B6D8A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 00C302BB1ABCB91800DB3ED1 /* RCTImage.xcodeproj */;
@@ -267,20 +302,6 @@
 			remoteGlobalIDString = 3D3CD9321DE5FBEE00167DC4;
 			remoteInfo = "cxxreact-tvOS";
 		};
-		3DAD3EAC1DF850E9000B6D8A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 146833FF1AC3E56700842450 /* React.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 3D3CD90B1DE5FBD600167DC4;
-			remoteInfo = jschelpers;
-		};
-		3DAD3EAE1DF850E9000B6D8A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 146833FF1AC3E56700842450 /* React.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 3D3CD9181DE5FBD800167DC4;
-			remoteInfo = "jschelpers-tvOS";
-		};
 		5E9157321DD0AC6500FF2AA8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */;
@@ -316,6 +337,41 @@
 			remoteGlobalIDString = 358F4ED71D1E81A9004DF814;
 			remoteInfo = RCTBlob;
 		};
+		BAAC1FD2220CB55D00527CDA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 146833FF1AC3E56700842450 /* React.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = EDEBC6D6214B3E7000DD5AC8;
+			remoteInfo = jsi;
+		};
+		BAAC1FD4220CB55D00527CDA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 146833FF1AC3E56700842450 /* React.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = EDEBC73B214B45A300DD5AC8;
+			remoteInfo = jsiexecutor;
+		};
+		BAAC1FD6220CB55D00527CDA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 146833FF1AC3E56700842450 /* React.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = ED296FB6214C9A0900B7C4FE;
+			remoteInfo = "jsi-tvOS";
+		};
+		BAAC1FD8220CB55D00527CDA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 146833FF1AC3E56700842450 /* React.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = ED296FEE214C9CF800B7C4FE;
+			remoteInfo = "jsiexecutor-tvOS";
+		};
+		BAAC1FDD220CB56000527CDA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DE2558ECD8024A42BD598409 /* RNSound.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 19825A1E1BD4A89800EE0337;
+			remoteInfo = RNSound;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -328,6 +384,7 @@
 		00E356EE1AD99517003FC87E /* AlchemyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AlchemyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* AlchemyTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AlchemyTests.m; sourceTree = "<group>"; };
+		0CC64B73726748CA87EF372E /* libRNSound.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNSound.a; sourceTree = "<group>"; };
 		139105B61AF99BAD00B5F7CC /* RCTSettings.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTSettings.xcodeproj; path = "../node_modules/react-native/Libraries/Settings/RCTSettings.xcodeproj"; sourceTree = "<group>"; };
 		139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTWebSocket.xcodeproj; path = "../node_modules/react-native/Libraries/WebSocket/RCTWebSocket.xcodeproj"; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* Alchemy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Alchemy.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -345,10 +402,57 @@
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
 		ADBDB91F1DFEBF0600ED6528 /* RCTBlob.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTBlob.xcodeproj; path = "../node_modules/react-native/Libraries/Blob/RCTBlob.xcodeproj"; sourceTree = "<group>"; };
+		BAAC1FDF220CBC6800527CDA /* login_incorrect.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = login_incorrect.wav; path = ../android/app/src/main/res/raw/login_incorrect.wav; sourceTree = "<group>"; };
+		BAAC1FE0220CBC6800527CDA /* turn_right_to_body.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = turn_right_to_body.wav; path = ../android/app/src/main/res/raw/turn_right_to_body.wav; sourceTree = "<group>"; };
+		BAAC1FE1220CBC6800527CDA /* level_up_accept.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = level_up_accept.wav; path = ../android/app/src/main/res/raw/level_up_accept.wav; sourceTree = "<group>"; };
+		BAAC1FE2220CBC6800527CDA /* transmute_meditation.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = transmute_meditation.mp3; path = ../android/app/src/main/res/raw/transmute_meditation.mp3; sourceTree = "<group>"; };
+		BAAC1FE3220CBC6800527CDA /* unlock_fitness.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = unlock_fitness.mp3; path = ../android/app/src/main/res/raw/unlock_fitness.mp3; sourceTree = "<group>"; };
+		BAAC1FE4220CBC6800527CDA /* button_tips.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = button_tips.wav; path = ../android/app/src/main/res/raw/button_tips.wav; sourceTree = "<group>"; };
+		BAAC1FE5220CBC6800527CDA /* transmute_sunlight.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = transmute_sunlight.mp3; path = ../android/app/src/main/res/raw/transmute_sunlight.mp3; sourceTree = "<group>"; };
+		BAAC1FE6220CBC6800527CDA /* unlock_affirmations.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = unlock_affirmations.mp3; path = ../android/app/src/main/res/raw/unlock_affirmations.mp3; sourceTree = "<group>"; };
+		BAAC1FE7220CBC6800527CDA /* transmute_supplement.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = transmute_supplement.mp3; path = ../android/app/src/main/res/raw/transmute_supplement.mp3; sourceTree = "<group>"; };
+		BAAC1FE8220CBC6800527CDA /* transmute_fitness.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = transmute_fitness.mp3; path = ../android/app/src/main/res/raw/transmute_fitness.mp3; sourceTree = "<group>"; };
+		BAAC1FE9220CBC6900527CDA /* unlock_connect.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = unlock_connect.mp3; path = ../android/app/src/main/res/raw/unlock_connect.mp3; sourceTree = "<group>"; };
+		BAAC1FEA220CBC6900527CDA /* unlock_meditation.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = unlock_meditation.mp3; path = ../android/app/src/main/res/raw/unlock_meditation.mp3; sourceTree = "<group>"; };
+		BAAC1FEB220CBC6900527CDA /* unlock_values.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = unlock_values.mp3; path = ../android/app/src/main/res/raw/unlock_values.mp3; sourceTree = "<group>"; };
+		BAAC1FEC220CBC6900527CDA /* level_up_alert.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = level_up_alert.wav; path = ../android/app/src/main/res/raw/level_up_alert.wav; sourceTree = "<group>"; };
+		BAAC1FED220CBC6900527CDA /* button_back.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = button_back.wav; path = ../android/app/src/main/res/raw/button_back.wav; sourceTree = "<group>"; };
+		BAAC1FEE220CBC6900527CDA /* transmute_junkfood.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = transmute_junkfood.mp3; path = ../android/app/src/main/res/raw/transmute_junkfood.mp3; sourceTree = "<group>"; };
+		BAAC1FEF220CBC6900527CDA /* unlock_reading.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = unlock_reading.mp3; path = ../android/app/src/main/res/raw/unlock_reading.mp3; sourceTree = "<group>"; };
+		BAAC1FF0220CBC6900527CDA /* unlock_passion.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = unlock_passion.mp3; path = ../android/app/src/main/res/raw/unlock_passion.mp3; sourceTree = "<group>"; };
+		BAAC1FF1220CBC6900527CDA /* transmute_nature.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = transmute_nature.mp3; path = ../android/app/src/main/res/raw/transmute_nature.mp3; sourceTree = "<group>"; };
+		BAAC1FF2220CBC6900527CDA /* transmute_reading.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = transmute_reading.mp3; path = ../android/app/src/main/res/raw/transmute_reading.mp3; sourceTree = "<group>"; };
+		BAAC1FF3220CBC6900527CDA /* transmute_visualization.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = transmute_visualization.mp3; path = ../android/app/src/main/res/raw/transmute_visualization.mp3; sourceTree = "<group>"; };
+		BAAC1FF4220CBC6900527CDA /* unlock_mindfulness.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = unlock_mindfulness.mp3; path = ../android/app/src/main/res/raw/unlock_mindfulness.mp3; sourceTree = "<group>"; };
+		BAAC1FF5220CBC6A00527CDA /* unlock_yoga.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = unlock_yoga.mp3; path = ../android/app/src/main/res/raw/unlock_yoga.mp3; sourceTree = "<group>"; };
+		BAAC1FF6220CBC6A00527CDA /* turn_left_to_mind.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = turn_left_to_mind.wav; path = ../android/app/src/main/res/raw/turn_left_to_mind.wav; sourceTree = "<group>"; };
+		BAAC1FF7220CBC6A00527CDA /* login_correct.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = login_correct.wav; path = ../android/app/src/main/res/raw/login_correct.wav; sourceTree = "<group>"; };
+		BAAC1FF8220CBC6A00527CDA /* transmute_gratitude.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = transmute_gratitude.mp3; path = ../android/app/src/main/res/raw/transmute_gratitude.mp3; sourceTree = "<group>"; };
+		BAAC1FF9220CBC6A00527CDA /* transmute_yoga.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = transmute_yoga.mp3; path = ../android/app/src/main/res/raw/transmute_yoga.mp3; sourceTree = "<group>"; };
+		BAAC1FFA220CBC6A00527CDA /* button_home.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = button_home.wav; path = ../android/app/src/main/res/raw/button_home.wav; sourceTree = "<group>"; };
+		BAAC1FFB220CBC6A00527CDA /* unlock_nature.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = unlock_nature.mp3; path = ../android/app/src/main/res/raw/unlock_nature.mp3; sourceTree = "<group>"; };
+		BAAC1FFC220CBC6A00527CDA /* daily_rewards.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = daily_rewards.wav; path = ../android/app/src/main/res/raw/daily_rewards.wav; sourceTree = "<group>"; };
+		BAAC1FFD220CBC6A00527CDA /* transmute_connect.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = transmute_connect.mp3; path = ../android/app/src/main/res/raw/transmute_connect.mp3; sourceTree = "<group>"; };
+		BAAC1FFE220CBC6A00527CDA /* unlock_sleep.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = unlock_sleep.mp3; path = ../android/app/src/main/res/raw/unlock_sleep.mp3; sourceTree = "<group>"; };
+		BAAC1FFF220CBC6A00527CDA /* transmute_sleep.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = transmute_sleep.mp3; path = ../android/app/src/main/res/raw/transmute_sleep.mp3; sourceTree = "<group>"; };
+		BAAC2000220CBC6A00527CDA /* transmute_values.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = transmute_values.mp3; path = ../android/app/src/main/res/raw/transmute_values.mp3; sourceTree = "<group>"; };
+		BAAC2001220CBC6A00527CDA /* unlock_sunlight.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = unlock_sunlight.mp3; path = ../android/app/src/main/res/raw/unlock_sunlight.mp3; sourceTree = "<group>"; };
+		BAAC2002220CBC6A00527CDA /* transmute_passion.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = transmute_passion.mp3; path = ../android/app/src/main/res/raw/transmute_passion.mp3; sourceTree = "<group>"; };
+		BAAC2003220CBC6B00527CDA /* transmute_goodfood.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = transmute_goodfood.mp3; path = ../android/app/src/main/res/raw/transmute_goodfood.mp3; sourceTree = "<group>"; };
+		BAAC2004220CBC6B00527CDA /* unlock_junkfood.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = unlock_junkfood.mp3; path = ../android/app/src/main/res/raw/unlock_junkfood.mp3; sourceTree = "<group>"; };
+		BAAC2005220CBC6B00527CDA /* transmute_mindfulness.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = transmute_mindfulness.mp3; path = ../android/app/src/main/res/raw/transmute_mindfulness.mp3; sourceTree = "<group>"; };
+		BAAC2006220CBC6B00527CDA /* transmutations.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = transmutations.wav; path = ../android/app/src/main/res/raw/transmutations.wav; sourceTree = "<group>"; };
+		BAAC2007220CBC6B00527CDA /* transmute_hydration.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = transmute_hydration.mp3; path = ../android/app/src/main/res/raw/transmute_hydration.mp3; sourceTree = "<group>"; };
+		BAAC2008220CBC6B00527CDA /* transmute_affirmations.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = transmute_affirmations.mp3; path = ../android/app/src/main/res/raw/transmute_affirmations.mp3; sourceTree = "<group>"; };
+		BAAC2009220CBC6B00527CDA /* unlock_goodfood.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = unlock_goodfood.mp3; path = ../android/app/src/main/res/raw/unlock_goodfood.mp3; sourceTree = "<group>"; };
+		BAAC200A220CBC6B00527CDA /* unlock_supplement.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = unlock_supplement.mp3; path = ../android/app/src/main/res/raw/unlock_supplement.mp3; sourceTree = "<group>"; };
+		BAAC200B220CBC6B00527CDA /* unlock_visualization.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = unlock_visualization.mp3; path = ../android/app/src/main/res/raw/unlock_visualization.mp3; sourceTree = "<group>"; };
+		BAAC200C220CBC6B00527CDA /* login.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = login.mp3; path = ../android/app/src/main/res/raw/login.mp3; sourceTree = "<group>"; };
+		BAAC200D220CBC6B00527CDA /* home.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = home.wav; path = ../android/app/src/main/res/raw/home.wav; sourceTree = "<group>"; };
+		BAAC200E220CBC6B00527CDA /* button_more.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = button_more.wav; path = ../android/app/src/main/res/raw/button_more.wav; sourceTree = "<group>"; };
+		DE2558ECD8024A42BD598409 /* RNSound.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNSound.xcodeproj; path = "../node_modules/react-native-sound/RNSound.xcodeproj"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
-		DE2558ECD8024A42BD598409 /* RNSound.xcodeproj */ = {isa = PBXFileReference; name = "RNSound.xcodeproj"; path = "../node_modules/react-native-sound/RNSound.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
-		0CC64B73726748CA87EF372E /* libRNSound.a */ = {isa = PBXFileReference; name = "libRNSound.a"; path = "libRNSound.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -510,16 +614,16 @@
 				3DAD3EA71DF850E9000B6D8A /* libyoga.a */,
 				3DAD3EA91DF850E9000B6D8A /* libcxxreact.a */,
 				3DAD3EAB1DF850E9000B6D8A /* libcxxreact.a */,
-				3DAD3EAD1DF850E9000B6D8A /* libjschelpers.a */,
-				3DAD3EAF1DF850E9000B6D8A /* libjschelpers.a */,
 				2DF0FFDF2056DD460020B375 /* libjsinspector.a */,
 				2DF0FFE12056DD460020B375 /* libjsinspector-tvOS.a */,
 				2DF0FFE32056DD460020B375 /* libthird-party.a */,
 				2DF0FFE52056DD460020B375 /* libthird-party.a */,
 				2DF0FFE72056DD460020B375 /* libdouble-conversion.a */,
 				2DF0FFE92056DD460020B375 /* libdouble-conversion.a */,
-				2DF0FFEB2056DD460020B375 /* libprivatedata.a */,
-				2DF0FFED2056DD460020B375 /* libprivatedata-tvOS.a */,
+				BAAC1FD3220CB55D00527CDA /* libjsi.a */,
+				BAAC1FD5220CB55D00527CDA /* libjsiexecutor.a */,
+				BAAC1FD7220CB55D00527CDA /* libjsi-tvOS.a */,
+				BAAC1FD9220CB55D00527CDA /* libjsiexecutor-tvOS.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -584,11 +688,60 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				BAAC1FED220CBC6900527CDA /* button_back.wav */,
+				BAAC1FFA220CBC6A00527CDA /* button_home.wav */,
+				BAAC200E220CBC6B00527CDA /* button_more.wav */,
+				BAAC1FE4220CBC6800527CDA /* button_tips.wav */,
+				BAAC1FFC220CBC6A00527CDA /* daily_rewards.wav */,
+				BAAC200D220CBC6B00527CDA /* home.wav */,
+				BAAC1FE1220CBC6800527CDA /* level_up_accept.wav */,
+				BAAC1FEC220CBC6900527CDA /* level_up_alert.wav */,
+				BAAC1FF7220CBC6A00527CDA /* login_correct.wav */,
+				BAAC1FDF220CBC6800527CDA /* login_incorrect.wav */,
+				BAAC200C220CBC6B00527CDA /* login.mp3 */,
+				BAAC2006220CBC6B00527CDA /* transmutations.wav */,
+				BAAC2008220CBC6B00527CDA /* transmute_affirmations.mp3 */,
+				BAAC1FFD220CBC6A00527CDA /* transmute_connect.mp3 */,
+				BAAC1FE8220CBC6800527CDA /* transmute_fitness.mp3 */,
+				BAAC2003220CBC6B00527CDA /* transmute_goodfood.mp3 */,
+				BAAC1FF8220CBC6A00527CDA /* transmute_gratitude.mp3 */,
+				BAAC2007220CBC6B00527CDA /* transmute_hydration.mp3 */,
+				BAAC1FEE220CBC6900527CDA /* transmute_junkfood.mp3 */,
+				BAAC1FE2220CBC6800527CDA /* transmute_meditation.mp3 */,
+				BAAC2005220CBC6B00527CDA /* transmute_mindfulness.mp3 */,
+				BAAC1FF1220CBC6900527CDA /* transmute_nature.mp3 */,
+				BAAC2002220CBC6A00527CDA /* transmute_passion.mp3 */,
+				BAAC1FF2220CBC6900527CDA /* transmute_reading.mp3 */,
+				BAAC1FFF220CBC6A00527CDA /* transmute_sleep.mp3 */,
+				BAAC1FE5220CBC6800527CDA /* transmute_sunlight.mp3 */,
+				BAAC1FE7220CBC6800527CDA /* transmute_supplement.mp3 */,
+				BAAC2000220CBC6A00527CDA /* transmute_values.mp3 */,
+				BAAC1FF3220CBC6900527CDA /* transmute_visualization.mp3 */,
+				BAAC1FF9220CBC6A00527CDA /* transmute_yoga.mp3 */,
+				BAAC1FF6220CBC6A00527CDA /* turn_left_to_mind.wav */,
+				BAAC1FE0220CBC6800527CDA /* turn_right_to_body.wav */,
+				BAAC1FE6220CBC6800527CDA /* unlock_affirmations.mp3 */,
+				BAAC1FE9220CBC6900527CDA /* unlock_connect.mp3 */,
+				BAAC1FE3220CBC6800527CDA /* unlock_fitness.mp3 */,
+				BAAC2009220CBC6B00527CDA /* unlock_goodfood.mp3 */,
+				BAAC2004220CBC6B00527CDA /* unlock_junkfood.mp3 */,
+				BAAC1FEA220CBC6900527CDA /* unlock_meditation.mp3 */,
+				BAAC1FF4220CBC6900527CDA /* unlock_mindfulness.mp3 */,
+				BAAC1FFB220CBC6A00527CDA /* unlock_nature.mp3 */,
+				BAAC1FF0220CBC6900527CDA /* unlock_passion.mp3 */,
+				BAAC1FEF220CBC6900527CDA /* unlock_reading.mp3 */,
+				BAAC1FFE220CBC6A00527CDA /* unlock_sleep.mp3 */,
+				BAAC2001220CBC6A00527CDA /* unlock_sunlight.mp3 */,
+				BAAC200A220CBC6B00527CDA /* unlock_supplement.mp3 */,
+				BAAC1FEB220CBC6900527CDA /* unlock_values.mp3 */,
+				BAAC200B220CBC6B00527CDA /* unlock_visualization.mp3 */,
+				BAAC1FF5220CBC6A00527CDA /* unlock_yoga.mp3 */,
 				13B07FAE1A68108700A75B9A /* Alchemy */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* AlchemyTests */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
+				BAAC1FAC220CB55B00527CDA /* Recovered References */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -611,6 +764,22 @@
 			children = (
 				ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */,
 				2D16E6721FA4F8DC00B85C8A /* libRCTBlob-tvOS.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BAAC1FAC220CB55B00527CDA /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				0CC64B73726748CA87EF372E /* libRNSound.a */,
+			);
+			name = "Recovered References";
+			sourceTree = "<group>";
+		};
+		BAAC1FDA220CB55F00527CDA /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BAAC1FDE220CB56000527CDA /* libRNSound.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -774,6 +943,10 @@
 					ProductGroup = 146834001AC3E56700842450 /* Products */;
 					ProjectRef = 146833FF1AC3E56700842450 /* React.xcodeproj */;
 				},
+				{
+					ProductGroup = BAAC1FDA220CB55F00527CDA /* Products */;
+					ProjectRef = DE2558ECD8024A42BD598409 /* RNSound.xcodeproj */;
+				},
 			);
 			projectRoot = "";
 			targets = (
@@ -905,20 +1078,6 @@
 			remoteRef = 2DF0FFE82056DD460020B375 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		2DF0FFEB2056DD460020B375 /* libprivatedata.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libprivatedata.a;
-			remoteRef = 2DF0FFEA2056DD460020B375 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		2DF0FFED2056DD460020B375 /* libprivatedata-tvOS.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = "libprivatedata-tvOS.a";
-			remoteRef = 2DF0FFEC2056DD460020B375 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
 		3DAD3E841DF850E9000B6D8A /* libRCTImage-tvOS.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -996,20 +1155,6 @@
 			remoteRef = 3DAD3EAA1DF850E9000B6D8A /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		3DAD3EAD1DF850E9000B6D8A /* libjschelpers.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libjschelpers.a;
-			remoteRef = 3DAD3EAC1DF850E9000B6D8A /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		3DAD3EAF1DF850E9000B6D8A /* libjschelpers.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libjschelpers.a;
-			remoteRef = 3DAD3EAE1DF850E9000B6D8A /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
 		5E9157331DD0AC6500FF2AA8 /* libRCTAnimation.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -1045,6 +1190,41 @@
 			remoteRef = ADBDB9261DFEBF0700ED6528 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		BAAC1FD3220CB55D00527CDA /* libjsi.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libjsi.a;
+			remoteRef = BAAC1FD2220CB55D00527CDA /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		BAAC1FD5220CB55D00527CDA /* libjsiexecutor.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libjsiexecutor.a;
+			remoteRef = BAAC1FD4220CB55D00527CDA /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		BAAC1FD7220CB55D00527CDA /* libjsi-tvOS.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libjsi-tvOS.a";
+			remoteRef = BAAC1FD6220CB55D00527CDA /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		BAAC1FD9220CB55D00527CDA /* libjsiexecutor-tvOS.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libjsiexecutor-tvOS.a";
+			remoteRef = BAAC1FD8220CB55D00527CDA /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		BAAC1FDE220CB56000527CDA /* libRNSound.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRNSound.a;
+			remoteRef = BAAC1FDD220CB56000527CDA /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 /* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
@@ -1059,8 +1239,56 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BAAC200F220CBC6B00527CDA /* login_incorrect.wav in Resources */,
+				BAAC201C220CBC6B00527CDA /* level_up_alert.wav in Resources */,
+				BAAC2019220CBC6B00527CDA /* unlock_connect.mp3 in Resources */,
+				BAAC201D220CBC6B00527CDA /* button_back.wav in Resources */,
+				BAAC203B220CBC6B00527CDA /* unlock_visualization.mp3 in Resources */,
+				BAAC2028220CBC6B00527CDA /* transmute_gratitude.mp3 in Resources */,
+				BAAC2031220CBC6B00527CDA /* unlock_sunlight.mp3 in Resources */,
+				BAAC2023220CBC6B00527CDA /* transmute_visualization.mp3 in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				BAAC2012220CBC6B00527CDA /* transmute_meditation.mp3 in Resources */,
+				BAAC2025220CBC6B00527CDA /* unlock_yoga.mp3 in Resources */,
+				BAAC203E220CBC6B00527CDA /* button_more.wav in Resources */,
+				BAAC201F220CBC6B00527CDA /* unlock_reading.mp3 in Resources */,
+				BAAC201E220CBC6B00527CDA /* transmute_junkfood.mp3 in Resources */,
+				BAAC202A220CBC6B00527CDA /* button_home.wav in Resources */,
+				BAAC2027220CBC6B00527CDA /* login_correct.wav in Resources */,
+				BAAC2039220CBC6B00527CDA /* unlock_goodfood.mp3 in Resources */,
+				BAAC203C220CBC6B00527CDA /* login.mp3 in Resources */,
+				BAAC2013220CBC6B00527CDA /* unlock_fitness.mp3 in Resources */,
+				BAAC2011220CBC6B00527CDA /* level_up_accept.wav in Resources */,
+				BAAC201B220CBC6B00527CDA /* unlock_values.mp3 in Resources */,
+				BAAC201A220CBC6B00527CDA /* unlock_meditation.mp3 in Resources */,
+				BAAC202B220CBC6B00527CDA /* unlock_nature.mp3 in Resources */,
+				BAAC2021220CBC6B00527CDA /* transmute_nature.mp3 in Resources */,
+				BAAC2018220CBC6B00527CDA /* transmute_fitness.mp3 in Resources */,
+				BAAC2038220CBC6B00527CDA /* transmute_affirmations.mp3 in Resources */,
+				BAAC2030220CBC6B00527CDA /* transmute_values.mp3 in Resources */,
+				BAAC2033220CBC6B00527CDA /* transmute_goodfood.mp3 in Resources */,
+				BAAC2037220CBC6B00527CDA /* transmute_hydration.mp3 in Resources */,
+				BAAC202D220CBC6B00527CDA /* transmute_connect.mp3 in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
+				BAAC202E220CBC6B00527CDA /* unlock_sleep.mp3 in Resources */,
+				BAAC203A220CBC6B00527CDA /* unlock_supplement.mp3 in Resources */,
+				BAAC2015220CBC6B00527CDA /* transmute_sunlight.mp3 in Resources */,
+				BAAC2017220CBC6B00527CDA /* transmute_supplement.mp3 in Resources */,
+				BAAC2034220CBC6B00527CDA /* unlock_junkfood.mp3 in Resources */,
+				BAAC202C220CBC6B00527CDA /* daily_rewards.wav in Resources */,
+				BAAC2036220CBC6B00527CDA /* transmutations.wav in Resources */,
+				BAAC2032220CBC6B00527CDA /* transmute_passion.mp3 in Resources */,
+				BAAC2029220CBC6B00527CDA /* transmute_yoga.mp3 in Resources */,
+				BAAC203D220CBC6B00527CDA /* home.wav in Resources */,
+				BAAC2020220CBC6B00527CDA /* unlock_passion.mp3 in Resources */,
+				BAAC2016220CBC6B00527CDA /* unlock_affirmations.mp3 in Resources */,
+				BAAC2014220CBC6B00527CDA /* button_tips.wav in Resources */,
+				BAAC2010220CBC6B00527CDA /* turn_right_to_body.wav in Resources */,
+				BAAC2035220CBC6B00527CDA /* transmute_mindfulness.mp3 in Resources */,
+				BAAC2026220CBC6B00527CDA /* turn_left_to_mind.wav in Resources */,
+				BAAC202F220CBC6B00527CDA /* transmute_sleep.mp3 in Resources */,
+				BAAC2022220CBC6B00527CDA /* transmute_reading.mp3 in Resources */,
+				BAAC2024220CBC6B00527CDA /* unlock_mindfulness.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1183,9 +1411,14 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/../node_modules/react-native-sound/RNSound",
+				);
 				INFOPLIST_FILE = AlchemyTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-lc++",
@@ -1193,13 +1426,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Alchemy.app/Alchemy";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-				);
-				HEADER_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(SRCROOT)/../node_modules/react-native-sound/RNSound",
-				);
 			};
 			name = Debug;
 		};
@@ -1208,9 +1434,14 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/../node_modules/react-native-sound/RNSound",
+				);
 				INFOPLIST_FILE = AlchemyTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-lc++",
@@ -1218,13 +1449,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Alchemy.app/Alchemy";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-				);
-				HEADER_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(SRCROOT)/../node_modules/react-native-sound/RNSound",
-				);
 			};
 			name = Release;
 		};
@@ -1234,6 +1458,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/../node_modules/react-native-sound/RNSound",
+				);
 				INFOPLIST_FILE = Alchemy/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
@@ -1244,10 +1472,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = Alchemy;
 				VERSIONING_SYSTEM = "apple-generic";
-				HEADER_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(SRCROOT)/../node_modules/react-native-sound/RNSound",
-				);
 			};
 			name = Debug;
 		};
@@ -1256,6 +1480,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CURRENT_PROJECT_VERSION = 1;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/../node_modules/react-native-sound/RNSound",
+				);
 				INFOPLIST_FILE = Alchemy/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
@@ -1266,10 +1494,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = Alchemy;
 				VERSIONING_SYSTEM = "apple-generic";
-				HEADER_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(SRCROOT)/../node_modules/react-native-sound/RNSound",
-				);
 			};
 			name = Release;
 		};
@@ -1285,8 +1509,13 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_TESTABILITY = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/../node_modules/react-native-sound/RNSound",
+				);
 				INFOPLIST_FILE = "Alchemy-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-lc++",
@@ -1296,13 +1525,6 @@
 				SDKROOT = appletvos;
 				TARGETED_DEVICE_FAMILY = 3;
 				TVOS_DEPLOYMENT_TARGET = 9.2;
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-				);
-				HEADER_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(SRCROOT)/../node_modules/react-native-sound/RNSound",
-				);
 			};
 			name = Debug;
 		};
@@ -1318,8 +1540,13 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_NO_COMMON_BLOCKS = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/../node_modules/react-native-sound/RNSound",
+				);
 				INFOPLIST_FILE = "Alchemy-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-lc++",
@@ -1329,13 +1556,6 @@
 				SDKROOT = appletvos;
 				TARGETED_DEVICE_FAMILY = 3;
 				TVOS_DEPLOYMENT_TARGET = 9.2;
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-				);
-				HEADER_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(SRCROOT)/../node_modules/react-native-sound/RNSound",
-				);
 			};
 			name = Release;
 		};
@@ -1350,8 +1570,13 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_TESTABILITY = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/../node_modules/react-native-sound/RNSound",
+				);
 				INFOPLIST_FILE = "Alchemy-tvOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-lc++",
@@ -1361,13 +1586,6 @@
 				SDKROOT = appletvos;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Alchemy-tvOS.app/Alchemy-tvOS";
 				TVOS_DEPLOYMENT_TARGET = 10.1;
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-				);
-				HEADER_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(SRCROOT)/../node_modules/react-native-sound/RNSound",
-				);
 			};
 			name = Debug;
 		};
@@ -1382,8 +1600,13 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_NO_COMMON_BLOCKS = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/../node_modules/react-native-sound/RNSound",
+				);
 				INFOPLIST_FILE = "Alchemy-tvOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-lc++",
@@ -1393,13 +1616,6 @@
 				SDKROOT = appletvos;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Alchemy-tvOS.app/Alchemy-tvOS";
 				TVOS_DEPLOYMENT_TARGET = 10.1;
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-				);
-				HEADER_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(SRCROOT)/../node_modules/react-native-sound/RNSound",
-				);
 			};
 			name = Release;
 		};

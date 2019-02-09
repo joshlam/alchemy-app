@@ -3,8 +3,10 @@ import {
   Alert,
   AsyncStorage,
   Button,
+  Dimensions,
   Image,
   ImageBackground,
+  Platform,
   ScrollView,
   StyleSheet,
   Text,
@@ -12,14 +14,55 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
+import Modal from 'react-native-modal';
 import * as Progress from 'react-native-progress';
 import Sound from 'react-native-sound';
 import Swiper from 'react-native-swiper';
+
+const deviceWidth = Dimensions.get('window').width;
+const deviceHeight = Platform.OS === 'ios'
+  ? Dimensions.get('window').height
+  : require('react-native-extra-dimensions-android').get('REAL_WINDOW_HEIGHT');
 
 const styles = StyleSheet.create({
   backgroundImage: {
     height: '100%',
     width: '100%'
+  },
+  backgroundImageStyle: {
+    resizeMode: 'center'
+  },
+  modal: {
+
+  },
+  modalBackground: {
+    height: '100%',
+    justifyContent: 'center',
+    width: '100%'
+  },
+  modalBackgroundImage: {
+    resizeMode: 'contain'
+  },
+  modalButtons: {
+    alignItems: 'center',
+    flexDirection: 'row',
+    justifyContent: 'center',
+    marginLeft: 10,
+    marginTop: 65,
+    width: '100%'
+  },
+  modalButton: {
+    width: 130
+  },
+  modalButtonImage: {
+    height: 45,
+    width: 120
+  },
+  levelModalButtons: {
+    marginLeft: 5
+  },
+  ascendModalButtons: {
+    marginLeft: 0
   },
   paddedBackground: {
     padding: 2.5
@@ -685,7 +728,7 @@ export default class Screen extends React.Component {
   unlock(transmutation) {
     this.setState({unlocking: true});
 
-    fetch(`http://alchemy-api.herokuapp.com/api/transmutations/${
+    return fetch(`http://alchemy-api.herokuapp.com/api/transmutations/${
       transmutation
     }/unlock`, {
       method: 'PUT',
@@ -721,7 +764,7 @@ export default class Screen extends React.Component {
   transmute(transmutation) {
     this.setState({transmuting: true});
 
-    fetch(`http://alchemy-api.herokuapp.com/api/transmutations/${
+    return fetch(`http://alchemy-api.herokuapp.com/api/transmutations/${
       transmutation
     }/transmute`, {
       method: 'PUT',
@@ -1302,12 +1345,18 @@ class Transmutation extends React.PureComponent {
   }
 }
 
-class TransmutationPage extends React.PureComponent {
+class TransmutationPage extends React.Component {
   constructor(props) {
     super(props);
 
     this.handleUnlock = this.handleUnlock.bind(this);
+    this.handleUnlockConfirm = this.handleUnlockConfirm.bind(this);
     this.handleTransmute = this.handleTransmute.bind(this);
+    this.handleTransmuteConfirm = this.handleTransmuteConfirm.bind(this);
+    this.closeUnlockModal = this.closeUnlockModal.bind(this);
+    this.closeTransmuteModal = this.closeTransmuteModal.bind(this);
+
+    this.state = {unlockModalVisible: false, transmuteModalVisible: false};
   }
 
   get TransmuteButton() {
@@ -1370,31 +1419,31 @@ class TransmutationPage extends React.PureComponent {
   }
 
   handleUnlock() {
-    Alert.alert(
-      'Unlock',
-      'Ya sure?',
-      [
-         {text: 'Cancel', style: 'cancel'},
-         {
-          text: 'OK',
-          onPress: () => this.props.onUnlock(this.props.transmutation.name)
-        }
-      ]
-    );
+    this.setState({unlockModalVisible: true});
+  }
+
+  handleUnlockConfirm() {
+    this.closeUnlockModal();
+
+    this.props.onUnlock(this.props.transmutation.name);
   }
 
   handleTransmute() {
-    Alert.alert(
-      'Transmute',
-      'Ya sure?',
-      [
-         {text: 'Cancel', style: 'cancel'},
-         {
-          text: 'OK',
-          onPress: () => this.props.onTransmute(this.props.transmutation.name)
-        }
-      ]
-    );
+    this.setState({transmuteModalVisible: true});
+  }
+
+  handleTransmuteConfirm() {
+    this.closeTransmuteModal();
+
+    this.props.onTransmute(this.props.transmutation.name);
+  }
+
+  closeUnlockModal() {
+    this.setState({unlockModalVisible: false});
+  }
+
+  closeTransmuteModal() {
+    this.setState({transmuteModalVisible: false});
   }
 
   render() {
@@ -1419,6 +1468,80 @@ class TransmutationPage extends React.PureComponent {
         icon={icon}
         headerContent={mana}
       >
+        <Modal
+          style={styles.modal}
+          deviceHeight={deviceHeight}
+          deviceWidth={deviceWidth}
+          isVisible={this.state.unlockModalVisible}
+          onBackButtonPress={this.closeUnlockModal}
+          onBackdropPress={this.closeUnlockModal}
+        >
+          <ImageBackground
+            source={
+              require('../assets/images/transmutation/unlock-background.png')
+            }
+            style={styles.modalBackground}
+            imageStyle={styles.modalBackgroundImage}
+          >
+            <View style={styles.modalButtons}>
+              <TouchableOpacity
+                style={styles.modalButton}
+                onPress={this.closeUnlockModal}
+              >
+                <Image
+                  style={styles.modalButtonImage}
+                  source={require('../assets/images/transmutation/no-button.png')}
+                />
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={styles.modalButton}
+                onPress={this.handleUnlockConfirm}
+              >
+                <Image
+                  style={styles.modalButtonImage}
+                  source={require('../assets/images/transmutation/yes-button.png')}
+                />
+              </TouchableOpacity>
+            </View>
+          </ImageBackground>
+        </Modal>
+        <Modal
+          style={styles.modal}
+          deviceHeight={deviceHeight}
+          deviceWidth={deviceWidth}
+          isVisible={this.state.transmuteModalVisible}
+          onBackButtonPress={this.closeTransmuteModal}
+          onBackdropPress={this.closeTransmuteModal}
+        >
+          <ImageBackground
+            source={
+              require('../assets/images/transmutation/transmute-background.png')
+            }
+            style={styles.modalBackground}
+            imageStyle={styles.modalBackgroundImage}
+          >
+            <View style={styles.modalButtons}>
+              <TouchableOpacity
+                style={styles.modalButton}
+                onPress={this.closeTransmuteModal}
+              >
+                <Image
+                  style={styles.modalButtonImage}
+                  source={require('../assets/images/transmutation/not-yet-button.png')}
+                />
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={styles.modalButton}
+                onPress={this.handleTransmuteConfirm}
+              >
+                <Image
+                  style={styles.modalButtonImage}
+                  source={require('../assets/images/transmutation/yes-button.png')}
+                />
+              </TouchableOpacity>
+            </View>
+          </ImageBackground>
+        </Modal>
         <Text style={styles.transmutationInstructions}>
           {transmutation.instructions}
         </Text>
@@ -1528,8 +1651,17 @@ class AlchemistDisplay extends React.PureComponent {
   constructor(props) {
     super(props);
 
+    this.state = {
+      levelUpModalVisible: false,
+      ascendModalVisible: false
+    };
+
     this.handleAscend = this.handleAscend.bind(this);
     this.handleLevelUp = this.handleLevelUp.bind(this);
+    this.closeAscendModal = this.closeAscendModal.bind(this);
+    this.closeLevelUpModal = this.closeLevelUpModal.bind(this);
+    this.handleAscendConfirm = this.handleAscendConfirm.bind(this);
+    this.handleLevelUpConfirm = this.handleLevelUpConfirm.bind(this);
   }
 
   get manaForLevel() {
@@ -1560,31 +1692,31 @@ class AlchemistDisplay extends React.PureComponent {
   }
 
   handleAscend() {
-    Alert.alert(
-      'Ascend',
-      'Ya sure?',
-      [
-         {text: 'Cancel', style: 'cancel'},
-         {
-          text: 'OK',
-          onPress: () => this.props.onLevelUp(true)
-        }
-      ]
-    );
+    this.setState({ascendModalVisible: true});
   }
 
   handleLevelUp() {
-    Alert.alert(
-      'Level Up',
-      'Ya sure?',
-      [
-         {text: 'Cancel', style: 'cancel'},
-         {
-          text: 'OK',
-          onPress: () => this.props.onLevelUp(false)
-        }
-      ]
-    );
+    this.setState({levelUpModalVisible: true});
+  }
+
+  closeAscendModal() {
+    this.setState({ascendModalVisible: false});
+  }
+
+  closeLevelUpModal() {
+    this.setState({levelUpModalVisible: false});
+  }
+
+  handleAscendConfirm() {
+    this.setState({ascendModalVisible: false});
+
+    this.props.onLevelUp(true);
+  }
+
+  handleLevelUpConfirm() {
+    this.setState({levelUpModalVisible: false});
+
+    this.props.onLevelUp(false);
   }
 
   render() {
@@ -1593,6 +1725,80 @@ class AlchemistDisplay extends React.PureComponent {
 
     return (
       <View style={styles.alchemistDisplayContainer}>
+        <Modal
+          style={styles.modal}
+          deviceHeight={deviceHeight}
+          deviceWidth={deviceWidth}
+          isVisible={this.state.levelUpModalVisible}
+          onBackButtonPress={this.closeLevelUpModal}
+          onBackdropPress={this.closeLevelUpModal}
+        >
+          <ImageBackground
+            source={
+              require('../assets/images/level/window.png')
+            }
+            style={styles.modalBackground}
+            imageStyle={styles.modalBackgroundImage}
+          >
+            <View style={[styles.modalButtons, styles.levelModalButtons]}>
+              <TouchableOpacity
+                style={styles.modalButton}
+                onPress={this.closeLevelUpModal}
+              >
+                <Image
+                  style={styles.modalButtonImage}
+                  source={require('../assets/images/level/no-button.png')}
+                />
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={styles.modalButton}
+                onPress={this.handleLevelUpConfirm}
+              >
+                <Image
+                  style={styles.modalButtonImage}
+                  source={require('../assets/images/level/yes-button.png')}
+                />
+              </TouchableOpacity>
+            </View>
+          </ImageBackground>
+        </Modal>
+        <Modal
+          style={styles.modal}
+          deviceHeight={deviceHeight}
+          deviceWidth={deviceWidth}
+          isVisible={this.state.ascendModalVisible}
+          onBackButtonPress={this.closeAscendModal}
+          onBackdropPress={this.closeAscendModal}
+        >
+          <ImageBackground
+            source={
+              require('../assets/images/ascend/window.png')
+            }
+            style={styles.modalBackground}
+            imageStyle={styles.modalBackgroundImage}
+          >
+            <View style={[styles.modalButtons, styles.ascendModalButtons]}>
+              <TouchableOpacity
+                style={styles.modalButton}
+                onPress={this.closeAscendModal}
+              >
+                <Image
+                  style={styles.modalButtonImage}
+                  source={require('../assets/images/ascend/wait-button.png')}
+                />
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={styles.modalButton}
+                onPress={this.handleAscendConfirm}
+              >
+                <Image
+                  style={styles.modalButtonImage}
+                  source={require('../assets/images/ascend/ready-button.png')}
+                />
+              </TouchableOpacity>
+            </View>
+          </ImageBackground>
+        </Modal>
         {this.Transcend}
         <View style={styles.alchemistDisplay}>
           <Text style={styles.alchemistDisplayText}>Level {level}</Text>

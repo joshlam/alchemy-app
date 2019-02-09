@@ -783,7 +783,7 @@ export default class Screen extends React.Component {
   levelUp(ascending) {
     this.setState({levelingUp: true});
 
-    fetch('http://alchemy-api.herokuapp.com/api/me/transcend', {
+    return fetch('http://alchemy-api.herokuapp.com/api/me/transcend', {
       method: 'POST',
       headers: {
         'Authorization': this.state.authToken,
@@ -1653,7 +1653,9 @@ class AlchemistDisplay extends React.PureComponent {
 
     this.state = {
       levelUpModalVisible: false,
-      ascendModalVisible: false
+      levelUpResultVisible: false,
+      ascendModalVisible: false,
+      ascendResultVisible: false
     };
 
     this.handleAscend = this.handleAscend.bind(this);
@@ -1691,6 +1693,30 @@ class AlchemistDisplay extends React.PureComponent {
     return <View />;
   }
 
+  get AscendResult() {
+    if (this.props.rank === 'Acolyte') {
+      return (
+        <ImageBackground
+          source={
+            require('../assets/images/ascend/acolyte.png')
+          }
+          style={styles.modalBackground}
+          imageStyle={styles.modalBackgroundImage}
+        />
+      );
+    }
+
+    return (
+      <ImageBackground
+        source={
+          require('../assets/images/ascend/alchemist.png')
+        }
+        style={styles.modalBackground}
+        imageStyle={styles.modalBackgroundImage}
+      />
+    );
+  }
+
   handleAscend() {
     this.setState({ascendModalVisible: true});
   }
@@ -1717,6 +1743,14 @@ class AlchemistDisplay extends React.PureComponent {
     this.setState({levelUpModalVisible: false});
 
     this.props.onLevelUp(false);
+  }
+
+  closeAscendResult() {
+    this.setState({ascendResultVisible: false});
+  }
+
+  closeLevelUpResult() {
+    this.setState({levelUpResultVisible: false});
   }
 
   render() {
@@ -1766,6 +1800,24 @@ class AlchemistDisplay extends React.PureComponent {
           style={styles.modal}
           deviceHeight={deviceHeight}
           deviceWidth={deviceWidth}
+          isVisible={this.state.levelUpResultVisible}
+          onBackButtonPress={this.closeLevelResult}
+          onBackdropPress={this.closeLevelResult}
+        >
+          <ImageBackground
+            source={
+              require('../assets/images/level/result.png')
+            }
+            style={styles.modalBackground}
+            imageStyle={styles.modalBackgroundImage}
+          >
+            <Text style={styles.level}>{level}</Text>
+          </ImageBackground>
+        </Modal>
+        <Modal
+          style={styles.modal}
+          deviceHeight={deviceHeight}
+          deviceWidth={deviceWidth}
           isVisible={this.state.ascendModalVisible}
           onBackButtonPress={this.closeAscendModal}
           onBackdropPress={this.closeAscendModal}
@@ -1798,6 +1850,16 @@ class AlchemistDisplay extends React.PureComponent {
               </TouchableOpacity>
             </View>
           </ImageBackground>
+        </Modal>
+        <Modal
+          style={styles.modal}
+          deviceHeight={deviceHeight}
+          deviceWidth={deviceWidth}
+          isVisible={this.state.ascendResultVisible}
+          onBackButtonPress={this.closeAscendResult}
+          onBackdropPress={this.closeAscendResult}
+        >
+          {this.AscendResult}
         </Modal>
         {this.Transcend}
         <View style={styles.alchemistDisplay}>

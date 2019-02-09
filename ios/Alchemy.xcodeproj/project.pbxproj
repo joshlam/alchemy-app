@@ -39,9 +39,13 @@
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
 		8CDA03857340460FA077FCBC /* libRNSound.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0CC64B73726748CA87EF372E /* libRNSound.a */; };
 		ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */; };
+		BA3695A8220E557B0065F7C4 /* ascend_accept.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BA3695A3220E557B0065F7C4 /* ascend_accept.mp3 */; };
+		BA3695A9220E557B0065F7C4 /* level_up_accept.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BA3695A4220E557B0065F7C4 /* level_up_accept.mp3 */; };
+		BA3695AA220E557B0065F7C4 /* ascend_alert.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BA3695A5220E557B0065F7C4 /* ascend_alert.mp3 */; };
+		BA3695AB220E557B0065F7C4 /* level_up_alert.wav in Resources */ = {isa = PBXBuildFile; fileRef = BA3695A6220E557B0065F7C4 /* level_up_alert.wav */; };
+		BA3695AC220E557B0065F7C4 /* open_transmutation.wav in Resources */ = {isa = PBXBuildFile; fileRef = BA3695A7220E557B0065F7C4 /* open_transmutation.wav */; };
 		BAAC200F220CBC6B00527CDA /* login_incorrect.wav in Resources */ = {isa = PBXBuildFile; fileRef = BAAC1FDF220CBC6800527CDA /* login_incorrect.wav */; };
 		BAAC2010220CBC6B00527CDA /* turn_right_to_body.wav in Resources */ = {isa = PBXBuildFile; fileRef = BAAC1FE0220CBC6800527CDA /* turn_right_to_body.wav */; };
-		BAAC2011220CBC6B00527CDA /* level_up_accept.wav in Resources */ = {isa = PBXBuildFile; fileRef = BAAC1FE1220CBC6800527CDA /* level_up_accept.wav */; };
 		BAAC2012220CBC6B00527CDA /* transmute_meditation.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BAAC1FE2220CBC6800527CDA /* transmute_meditation.mp3 */; };
 		BAAC2013220CBC6B00527CDA /* unlock_fitness.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BAAC1FE3220CBC6800527CDA /* unlock_fitness.mp3 */; };
 		BAAC2014220CBC6B00527CDA /* button_tips.wav in Resources */ = {isa = PBXBuildFile; fileRef = BAAC1FE4220CBC6800527CDA /* button_tips.wav */; };
@@ -52,7 +56,6 @@
 		BAAC2019220CBC6B00527CDA /* unlock_connect.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BAAC1FE9220CBC6900527CDA /* unlock_connect.mp3 */; };
 		BAAC201A220CBC6B00527CDA /* unlock_meditation.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BAAC1FEA220CBC6900527CDA /* unlock_meditation.mp3 */; };
 		BAAC201B220CBC6B00527CDA /* unlock_values.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BAAC1FEB220CBC6900527CDA /* unlock_values.mp3 */; };
-		BAAC201C220CBC6B00527CDA /* level_up_alert.wav in Resources */ = {isa = PBXBuildFile; fileRef = BAAC1FEC220CBC6900527CDA /* level_up_alert.wav */; };
 		BAAC201D220CBC6B00527CDA /* button_back.wav in Resources */ = {isa = PBXBuildFile; fileRef = BAAC1FED220CBC6900527CDA /* button_back.wav */; };
 		BAAC201E220CBC6B00527CDA /* transmute_junkfood.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BAAC1FEE220CBC6900527CDA /* transmute_junkfood.mp3 */; };
 		BAAC201F220CBC6B00527CDA /* unlock_reading.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BAAC1FEF220CBC6900527CDA /* unlock_reading.mp3 */; };
@@ -402,9 +405,13 @@
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
 		ADBDB91F1DFEBF0600ED6528 /* RCTBlob.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTBlob.xcodeproj; path = "../node_modules/react-native/Libraries/Blob/RCTBlob.xcodeproj"; sourceTree = "<group>"; };
+		BA3695A3220E557B0065F7C4 /* ascend_accept.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = ascend_accept.mp3; path = ../android/app/src/main/res/raw/ascend_accept.mp3; sourceTree = "<group>"; };
+		BA3695A4220E557B0065F7C4 /* level_up_accept.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = level_up_accept.mp3; path = ../android/app/src/main/res/raw/level_up_accept.mp3; sourceTree = "<group>"; };
+		BA3695A5220E557B0065F7C4 /* ascend_alert.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = ascend_alert.mp3; path = ../android/app/src/main/res/raw/ascend_alert.mp3; sourceTree = "<group>"; };
+		BA3695A6220E557B0065F7C4 /* level_up_alert.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = level_up_alert.wav; path = ../android/app/src/main/res/raw/level_up_alert.wav; sourceTree = "<group>"; };
+		BA3695A7220E557B0065F7C4 /* open_transmutation.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = open_transmutation.wav; path = ../android/app/src/main/res/raw/open_transmutation.wav; sourceTree = "<group>"; };
 		BAAC1FDF220CBC6800527CDA /* login_incorrect.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = login_incorrect.wav; path = ../android/app/src/main/res/raw/login_incorrect.wav; sourceTree = "<group>"; };
 		BAAC1FE0220CBC6800527CDA /* turn_right_to_body.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = turn_right_to_body.wav; path = ../android/app/src/main/res/raw/turn_right_to_body.wav; sourceTree = "<group>"; };
-		BAAC1FE1220CBC6800527CDA /* level_up_accept.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = level_up_accept.wav; path = ../android/app/src/main/res/raw/level_up_accept.wav; sourceTree = "<group>"; };
 		BAAC1FE2220CBC6800527CDA /* transmute_meditation.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = transmute_meditation.mp3; path = ../android/app/src/main/res/raw/transmute_meditation.mp3; sourceTree = "<group>"; };
 		BAAC1FE3220CBC6800527CDA /* unlock_fitness.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = unlock_fitness.mp3; path = ../android/app/src/main/res/raw/unlock_fitness.mp3; sourceTree = "<group>"; };
 		BAAC1FE4220CBC6800527CDA /* button_tips.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = button_tips.wav; path = ../android/app/src/main/res/raw/button_tips.wav; sourceTree = "<group>"; };
@@ -415,7 +422,6 @@
 		BAAC1FE9220CBC6900527CDA /* unlock_connect.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = unlock_connect.mp3; path = ../android/app/src/main/res/raw/unlock_connect.mp3; sourceTree = "<group>"; };
 		BAAC1FEA220CBC6900527CDA /* unlock_meditation.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = unlock_meditation.mp3; path = ../android/app/src/main/res/raw/unlock_meditation.mp3; sourceTree = "<group>"; };
 		BAAC1FEB220CBC6900527CDA /* unlock_values.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = unlock_values.mp3; path = ../android/app/src/main/res/raw/unlock_values.mp3; sourceTree = "<group>"; };
-		BAAC1FEC220CBC6900527CDA /* level_up_alert.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = level_up_alert.wav; path = ../android/app/src/main/res/raw/level_up_alert.wav; sourceTree = "<group>"; };
 		BAAC1FED220CBC6900527CDA /* button_back.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = button_back.wav; path = ../android/app/src/main/res/raw/button_back.wav; sourceTree = "<group>"; };
 		BAAC1FEE220CBC6900527CDA /* transmute_junkfood.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = transmute_junkfood.mp3; path = ../android/app/src/main/res/raw/transmute_junkfood.mp3; sourceTree = "<group>"; };
 		BAAC1FEF220CBC6900527CDA /* unlock_reading.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = unlock_reading.mp3; path = ../android/app/src/main/res/raw/unlock_reading.mp3; sourceTree = "<group>"; };
@@ -688,14 +694,17 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				BA3695A3220E557B0065F7C4 /* ascend_accept.mp3 */,
+				BA3695A5220E557B0065F7C4 /* ascend_alert.mp3 */,
+				BA3695A4220E557B0065F7C4 /* level_up_accept.mp3 */,
+				BA3695A6220E557B0065F7C4 /* level_up_alert.wav */,
+				BA3695A7220E557B0065F7C4 /* open_transmutation.wav */,
 				BAAC1FED220CBC6900527CDA /* button_back.wav */,
 				BAAC1FFA220CBC6A00527CDA /* button_home.wav */,
 				BAAC200E220CBC6B00527CDA /* button_more.wav */,
 				BAAC1FE4220CBC6800527CDA /* button_tips.wav */,
 				BAAC1FFC220CBC6A00527CDA /* daily_rewards.wav */,
 				BAAC200D220CBC6B00527CDA /* home.wav */,
-				BAAC1FE1220CBC6800527CDA /* level_up_accept.wav */,
-				BAAC1FEC220CBC6900527CDA /* level_up_alert.wav */,
 				BAAC1FF7220CBC6A00527CDA /* login_correct.wav */,
 				BAAC1FDF220CBC6800527CDA /* login_incorrect.wav */,
 				BAAC200C220CBC6B00527CDA /* login.mp3 */,
@@ -870,7 +879,11 @@
 				TargetAttributes = {
 					00E356ED1AD99517003FC87E = {
 						CreatedOnToolsVersion = 6.2;
+						DevelopmentTeam = 4HHBDG2DSX;
 						TestTargetID = 13B07F861A680F5B00A75B9A;
+					};
+					13B07F861A680F5B00A75B9A = {
+						DevelopmentTeam = 4HHBDG2DSX;
 					};
 					2D02E47A1E0B4A5D006451C7 = {
 						CreatedOnToolsVersion = 8.2.1;
@@ -1240,7 +1253,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				BAAC200F220CBC6B00527CDA /* login_incorrect.wav in Resources */,
-				BAAC201C220CBC6B00527CDA /* level_up_alert.wav in Resources */,
 				BAAC2019220CBC6B00527CDA /* unlock_connect.mp3 in Resources */,
 				BAAC201D220CBC6B00527CDA /* button_back.wav in Resources */,
 				BAAC203B220CBC6B00527CDA /* unlock_visualization.mp3 in Resources */,
@@ -1249,6 +1261,7 @@
 				BAAC2023220CBC6B00527CDA /* transmute_visualization.mp3 in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				BAAC2012220CBC6B00527CDA /* transmute_meditation.mp3 in Resources */,
+				BA3695AC220E557B0065F7C4 /* open_transmutation.wav in Resources */,
 				BAAC2025220CBC6B00527CDA /* unlock_yoga.mp3 in Resources */,
 				BAAC203E220CBC6B00527CDA /* button_more.wav in Resources */,
 				BAAC201F220CBC6B00527CDA /* unlock_reading.mp3 in Resources */,
@@ -1258,12 +1271,12 @@
 				BAAC2039220CBC6B00527CDA /* unlock_goodfood.mp3 in Resources */,
 				BAAC203C220CBC6B00527CDA /* login.mp3 in Resources */,
 				BAAC2013220CBC6B00527CDA /* unlock_fitness.mp3 in Resources */,
-				BAAC2011220CBC6B00527CDA /* level_up_accept.wav in Resources */,
 				BAAC201B220CBC6B00527CDA /* unlock_values.mp3 in Resources */,
 				BAAC201A220CBC6B00527CDA /* unlock_meditation.mp3 in Resources */,
 				BAAC202B220CBC6B00527CDA /* unlock_nature.mp3 in Resources */,
 				BAAC2021220CBC6B00527CDA /* transmute_nature.mp3 in Resources */,
 				BAAC2018220CBC6B00527CDA /* transmute_fitness.mp3 in Resources */,
+				BA3695AA220E557B0065F7C4 /* ascend_alert.mp3 in Resources */,
 				BAAC2038220CBC6B00527CDA /* transmute_affirmations.mp3 in Resources */,
 				BAAC2030220CBC6B00527CDA /* transmute_values.mp3 in Resources */,
 				BAAC2033220CBC6B00527CDA /* transmute_goodfood.mp3 in Resources */,
@@ -1273,13 +1286,16 @@
 				BAAC202E220CBC6B00527CDA /* unlock_sleep.mp3 in Resources */,
 				BAAC203A220CBC6B00527CDA /* unlock_supplement.mp3 in Resources */,
 				BAAC2015220CBC6B00527CDA /* transmute_sunlight.mp3 in Resources */,
+				BA3695AB220E557B0065F7C4 /* level_up_alert.wav in Resources */,
 				BAAC2017220CBC6B00527CDA /* transmute_supplement.mp3 in Resources */,
 				BAAC2034220CBC6B00527CDA /* unlock_junkfood.mp3 in Resources */,
+				BA3695A9220E557B0065F7C4 /* level_up_accept.mp3 in Resources */,
 				BAAC202C220CBC6B00527CDA /* daily_rewards.wav in Resources */,
 				BAAC2036220CBC6B00527CDA /* transmutations.wav in Resources */,
 				BAAC2032220CBC6B00527CDA /* transmute_passion.mp3 in Resources */,
 				BAAC2029220CBC6B00527CDA /* transmute_yoga.mp3 in Resources */,
 				BAAC203D220CBC6B00527CDA /* home.wav in Resources */,
+				BA3695A8220E557B0065F7C4 /* ascend_accept.mp3 in Resources */,
 				BAAC2020220CBC6B00527CDA /* unlock_passion.mp3 in Resources */,
 				BAAC2016220CBC6B00527CDA /* unlock_affirmations.mp3 in Resources */,
 				BAAC2014220CBC6B00527CDA /* button_tips.wav in Resources */,
@@ -1407,6 +1423,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = 4HHBDG2DSX;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -1434,6 +1451,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
+				DEVELOPMENT_TEAM = 4HHBDG2DSX;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-sound/RNSound",
@@ -1458,11 +1476,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
+				DEVELOPMENT_TEAM = 4HHBDG2DSX;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-sound/RNSound",
 				);
 				INFOPLIST_FILE = Alchemy/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -1480,11 +1500,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 4HHBDG2DSX;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-sound/RNSound",
 				);
 				INFOPLIST_FILE = Alchemy/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",

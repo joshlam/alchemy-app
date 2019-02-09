@@ -70,7 +70,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     height: 120,
     width: '100%',
-    justifyContent: 'flex-end',
+    justifyContent: 'space-between',
     marginTop: 10,
     position: 'absolute'
   },
@@ -94,15 +94,21 @@ const styles = StyleSheet.create({
     fontSize: 18,
     textAlign: 'left'
   },
+  ascend: {
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  ascendImage: {
+    height: 150,
+    width: 150
+  },
   levelUp: {
-    position: 'absolute',
-    right: -27,
-    top: 64,
-    zIndex: 1000
+    alignItems: 'center',
+    justifyContent: 'center'
   },
   levelUpImage: {
-    height: 130,
-    width: 130
+    height: 150,
+    width: 150
   },
   openTransmutations: {
     alignItems: 'flex-end',
@@ -626,6 +632,8 @@ export default class Screen extends React.Component {
   }
 
   openTransmutation(name) {
+    playSound('open_transmutation');
+
     this.fetchTransmutation(name)
       .then(() => {
         this.setState({
@@ -729,7 +737,7 @@ export default class Screen extends React.Component {
       });
   }
 
-  levelUp() {
+  levelUp(ascending) {
     this.setState({levelingUp: true});
 
     fetch('http://alchemy-api.herokuapp.com/api/me/transcend', {
@@ -740,7 +748,7 @@ export default class Screen extends React.Component {
       }
     }).then(response => response.json())
       .then(alchemist => {
-        playSound('level_up_accept');
+        playSound(ascending ? 'ascend_accept' : 'level_up_accept', 'mp3');
 
         this.setState({
           rank: normalizeRank(alchemist.rank),
@@ -1520,7 +1528,49 @@ class AlchemistDisplay extends React.PureComponent {
   constructor(props) {
     super(props);
 
+    this.handleAscend = this.handleAscend.bind(this);
     this.handleLevelUp = this.handleLevelUp.bind(this);
+  }
+
+  get manaForLevel() {
+    return manaFor(this.props.level, this.props.rank);
+  }
+
+  get ascendAvailable() {
+    const {level, rank} = this.props;
+
+    return this.levelUpAvailable && level === 10 && rank !== 'Alchemist';
+  }
+
+  get levelUpAvailable() {
+    const {mana, isUnlocking} = this.props;
+    const manaForLevel = this.manaForLevel;
+
+    return !isUnlocking && manaForLevel && mana >= manaForLevel;
+  }
+
+  get Transcend() {
+    if (this.ascendAvailable) return <Ascend onAscend={this.handleAscend} />;
+
+    if (this.levelUpAvailable) {
+      return <LevelUp onLevelUp={this.handleLevelUp} />;
+    }
+
+    return <View />;
+  }
+
+  handleAscend() {
+    Alert.alert(
+      'Ascend',
+      'Ya sure?',
+      [
+         {text: 'Cancel', style: 'cancel'},
+         {
+          text: 'OK',
+          onPress: () => this.props.onLevelUp(true)
+        }
+      ]
+    );
   }
 
   handleLevelUp() {
@@ -1531,18 +1581,19 @@ class AlchemistDisplay extends React.PureComponent {
          {text: 'Cancel', style: 'cancel'},
          {
           text: 'OK',
-          onPress: this.props.onLevelUp
+          onPress: () => this.props.onLevelUp(false)
         }
       ]
     );
   }
 
   render() {
-    const {level, mana, rank, isUnlocking} = this.props;
-    const manaForLevel = manaFor(level, rank);
+    const {level, mana, rank} = this.props;
+    const manaForLevel = this.manaForLevel;
 
     return (
       <View style={styles.alchemistDisplayContainer}>
+        {this.Transcend}
         <View style={styles.alchemistDisplay}>
           <Text style={styles.alchemistDisplayText}>Level {level}</Text>
           <Text style={styles.alchemistDisplayText}>{rank}</Text>
@@ -1556,10 +1607,6 @@ class AlchemistDisplay extends React.PureComponent {
             <Text style={styles.manaText}>{mana}/{manaForLevel}</Text>
           </View>
         </View>
-        {
-          !isUnlocking && manaForLevel && mana >= manaForLevel &&
-            <LevelUp onLevelUp={this.handleLevelUp} />
-        }
       </View>
     );
   }
@@ -1574,8 +1621,25 @@ class LevelUp extends React.PureComponent {
     return (
       <TouchableOpacity style={styles.levelUp} onPress={this.props.onLevelUp}>
         <Image
-        style={styles.levelUpImage}
-        source={require('../assets/images/level-up.png')}
+          style={styles.levelUpImage}
+          source={require('../assets/images/level-up.png')}
+        />
+      </TouchableOpacity>
+    );
+  }
+}
+
+class Ascend extends React.PureComponent {
+  componentDidMount() {
+    playSound('ascend_alert', 'mp3');
+  }
+
+  render() {
+    return (
+      <TouchableOpacity style={styles.ascend} onPress={this.props.onAscend}>
+        <Image
+          style={styles.ascendImage}
+          source={require('../assets/images/ascend.png')}
         />
       </TouchableOpacity>
     );

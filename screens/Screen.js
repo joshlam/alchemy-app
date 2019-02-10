@@ -332,7 +332,7 @@ const styles = StyleSheet.create({
     fontSize: fontSize(32),
     fontWeight: '600',
     textShadowColor: 'black',
-    textShadowOffset: {width: -1, height: 3},
+    textShadowOffset: {width: -1, height: 2},
     textShadowRadius: 1
   },
   transmutationTitle: {
@@ -364,8 +364,8 @@ const styles = StyleSheet.create({
   },
   transmute: {
     alignItems: 'center',
-    marginBottom: 10,
-    marginTop: 10
+    marginBottom: 12,
+    marginTop: 17
   },
   transmuteButton: {
     height: 65,
@@ -384,6 +384,9 @@ const styles = StyleSheet.create({
   transmutationText: {
     color: 'black',
     fontSize: fontSize(20)
+  },
+  explanationText: {
+    marginTop: 5
   },
   expandTransmutation: {
     flexDirection: 'row',
@@ -1588,7 +1591,7 @@ class TransmutationPage extends React.Component {
         <View style={styles.effectsTitle}>
           <Text style={styles.effectsTitleText}>Effects</Text>
         </View>
-        <Text style={styles.transmutationText}>
+        <Text style={[styles.transmutationText, styles.explanationText]}>
           {transmutation.explanation}
         </Text>
         <View style={styles.expandTransmutation}>

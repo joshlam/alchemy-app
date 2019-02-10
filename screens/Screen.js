@@ -6,6 +6,7 @@ import {
   Dimensions,
   Image,
   ImageBackground,
+  Linking,
   Platform,
   ScrollView,
   StyleSheet,
@@ -371,6 +372,9 @@ const styles = StyleSheet.create({
   transmutationText: {
     color: 'black',
     fontSize: fontSize(20)
+  },
+  link: {
+    color: 'blue'
   },
   explanationText: {
     marginTop: 5
@@ -946,6 +950,7 @@ export default class Screen extends React.Component {
 
       return (
         <Tips
+          isYoga={name === 'Yoga'}
           icon={ICONS[name][this.state[name]]}
           tips={transmutation.tips}
           onBack={this.goBack}
@@ -1636,14 +1641,33 @@ class TransmutationTemplate extends React.PureComponent {
   }
 }
 
-const Tips = ({icon, tips, onBack}) => {
+const yogaTips = '\n-Be sure to inhale and exhale deeply during the poses, allowing your full attention to rest on becoming aware of your body.\n\n-Doing yoga first thing in the morning will help you center yourself for the day. Doing it at night can help you unwind before bed.\n\n-Consider putting on relaxing music while you perform your pose(s) if you find it helps your state.';
+const openYogaLink = () => Linking.openURL('https://www.youtube.com/watch?v=4C-gxOE0j7s&t=1s');
+const YogaTips = () => {
+  return (
+    <View>
+      <Text
+        style={[styles.transmutationText, styles.link]}
+        onPress={openYogaLink}
+      >
+        {'https://www.youtube.com/watch?v=4C-gxOE0j7s&t=1s'}
+      </Text>
+      <Text style={styles.transmutationText}>{yogaTips}</Text>
+    </View>
+  );
+};
+
+const Tips = ({isYoga, icon, tips, onBack}) => {
   return (
     <TransmutationTemplate
       onBack={onBack}
       title={'Tips'}
       icon={icon}
     >
-      <Text style={styles.transmutationText}>{tips}</Text>
+      {isYoga
+        ? <YogaTips />
+        : <Text style={styles.transmutationText}>{tips}</Text>
+      }
     </TransmutationTemplate>
   );
 };

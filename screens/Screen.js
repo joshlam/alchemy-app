@@ -23,11 +23,19 @@ const deviceWidth = Dimensions.get('window').width;
 const deviceHeight = Platform.OS === 'ios'
   ? Dimensions.get('window').height
   : require('react-native-extra-dimensions-android').get('REAL_WINDOW_HEIGHT');
-const fontSize = size => {
-  if (Platform.OS !== 'ios') return size;
-  if (size >= 30) return size - 8;
+const screenSizeFrom = height => {
+  if (height > 850) return 'XXL';
+  if (height > 800) return 'XL';
+  if (height > 750) return 'L';
+  if (height > 700) return 'M';
 
-  return size - 4;
+  return 'S';
+};
+const screenSize = screenSizeFrom(deviceHeight);
+const fontSize = size => {
+  if (size >= 30) return size - (Platform.OS === 'ios' ? 8 : 7);
+
+  return size - (Platform.OS === 'ios' ? 4 : 2);
 };
 
 const styles = StyleSheet.create({
@@ -40,6 +48,15 @@ const styles = StyleSheet.create({
   },
   transmutationTemplate: {
 
+  },
+  transmutationDivider: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    top: -10,
+    width: '100%'
+  },
+  transmutationDividerImage: {
+    resizeMode: 'contain'
   },
   modal: {
 
@@ -121,10 +138,11 @@ const styles = StyleSheet.create({
   alchemistDisplayContainer: {
     flexDirection: 'row',
     height: 120,
-    width: '100%',
     justifyContent: 'space-between',
     marginTop: 10,
-    position: 'absolute'
+    position: 'absolute',
+    width: '100%',
+    zIndex: 2
   },
   alchemistDisplay: {
     alignItems: 'center',
@@ -148,7 +166,8 @@ const styles = StyleSheet.create({
   },
   ascend: {
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    zIndex: 3
   },
   ascendImage: {
     height: 150,
@@ -156,7 +175,8 @@ const styles = StyleSheet.create({
   },
   levelUp: {
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    zIndex: 3
   },
   levelUpImage: {
     height: 150,
@@ -178,11 +198,13 @@ const styles = StyleSheet.create({
     width: '35%'
   },
   transmutationContainer: {
-
+    height: 120,
+    width: 120,
+    zIndex: 4
   },
   transmutation: {
-    height: 90,
-    width: 90
+    height: '100%',
+    width: '100%'
   },
   mindTransmutationTree: {
     alignItems: 'flex-end',
@@ -192,8 +214,8 @@ const styles = StyleSheet.create({
   },
   bodyTransmutationTree: {
     alignItems: 'center',
-    justifyContent: 'space-between',
-    height: '90%'
+    height: '90%',
+    justifyContent: 'space-between'
   },
   transmutationRow: {
     flexDirection: 'row'
@@ -282,14 +304,16 @@ const styles = StyleSheet.create({
 
   },
   transmutationPage: {
-    padding: 10,
-    paddingTop: 20
+    paddingBottom: 0,
+    paddingLeft: 15,
+    paddingRight: 15,
+    paddingTop: Platform.OS === 'ios' ? 20 : 15
   },
   transmutationPageBackground: {
 
   },
   transmutationHeader: {
-    height: '10%'
+
   },
   transmutationTop: {
     flexDirection: 'row',
@@ -313,11 +337,11 @@ const styles = StyleSheet.create({
   },
   transmutationTitle: {
     alignItems: 'center',
-    top: -7
+    marginTop: 10
   },
   transmutationTitleText: {
     color: 'black',
-    fontSize: fontSize(54),
+    fontSize: fontSize(51),
     fontWeight: '600',
     textAlign: 'center'
   },
@@ -330,13 +354,13 @@ const styles = StyleSheet.create({
     width: 120
   },
   transmutationBody: {
-    flex: 1
+    flex: 1,
+    top: -15
   },
   transmutationInstructions: {
     color: 'black',
     fontSize: fontSize(32) - (Platform.OS === 'ios' ? 3 : 0),
-    textAlign: 'center',
-    top: -5
+    textAlign: 'center'
   },
   transmute: {
     alignItems: 'center',
@@ -1600,13 +1624,21 @@ class TransmutationTemplate extends React.PureComponent {
           <TransmutationHeader onBack={onBack} title={title}>
             {headerContent}
           </TransmutationHeader>
-          <View style={styles.transmutationIcon}>
-            <Image
-              style={styles.transmutationIconImage}
-              source={icon}
-            />
+          <ImageBackground
+            source={require('../assets/images/transmutation/divider.png')}
+            style={styles.transmutationDivider}
+            imageStyle={styles.transmutationDividerImage}
+          >
+            <View style={styles.transmutationIcon}>
+              <Image
+                style={styles.transmutationIconImage}
+                source={icon}
+              />
+            </View>
+          </ImageBackground>
+          <View style={styles.transmutationBody}>
+            <ScrollView style={styles.scrollView}>{children}</ScrollView>
           </View>
-          <View style={styles.transmutationBody}>{children}</View>
         </ImageBackground>
       </View>
     );
@@ -1620,9 +1652,7 @@ const Tips = ({icon, tips, onBack}) => {
       title={'Tips'}
       icon={icon}
     >
-      <ScrollView style={styles.scrollView}>
-        <Text style={styles.transmutationText}>{tips}</Text>
-      </ScrollView>
+      <Text style={styles.transmutationText}>{tips}</Text>
     </TransmutationTemplate>
   );
 };
@@ -1634,13 +1664,11 @@ const More = ({icon, content, references, onBack}) => {
       title={'More...'}
       icon={icon}
     >
-      <ScrollView style={styles.scrollView}>
-        <Text style={styles.transmutationText}>{content}</Text>
-        <View style={styles.referencesSection}>
-          <Text style={styles.referencesHeader}>References</Text>
-          <Text style={styles.transmutationText}>{references}</Text>
-        </View>
-      </ScrollView>
+      <Text style={styles.transmutationText}>{content}</Text>
+      <View style={styles.referencesSection}>
+        <Text style={styles.referencesHeader}>References</Text>
+        <Text style={styles.transmutationText}>{references}</Text>
+      </View>
     </TransmutationTemplate>
   );
 };

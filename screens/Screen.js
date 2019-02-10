@@ -46,6 +46,9 @@ const styles = StyleSheet.create({
   scrollView: {
     flex: 1
   },
+  transmutationsBackground: {
+    justifyContent: 'space-between'
+  },
   transmutationTemplate: {
 
   },
@@ -198,48 +201,32 @@ const styles = StyleSheet.create({
     width: '35%'
   },
   transmutationContainer: {
-    height: 120,
-    width: 120,
+    alignItems: 'center',
+    height: 90,
+    justifyContent: 'center',
+    marginBottom: 0,
+    marginLeft: 15,
+    marginRight: 15,
+    marginTop: 0,
+    width: 90,
     zIndex: 4
   },
   transmutation: {
     height: '100%',
     width: '100%'
   },
-  mindTransmutationTree: {
-    alignItems: 'flex-end',
-    flexDirection: 'row',
-    height: '90%',
-    justifyContent: 'space-between'
-  },
-  bodyTransmutationTree: {
-    alignItems: 'center',
-    height: '90%',
-    justifyContent: 'space-between'
+  transmutationTree: {
+    height: deviceHeight - 200,
+    justifyContent: 'center',
+    top: 120
   },
   transmutationRow: {
-    flexDirection: 'row'
-  },
-  transmutationRow1: {
-
-  },
-  transmutationRow1: {
-
-  },
-  transmutationRow1: {
-
-  },
-  transmutationRow1: {
-
-  },
-  transmutationRow1: {
-
-  },
-  transmutationRow1: {
-
+    alignItems: 'flex-end',
+    flexDirection: 'row',
+    justifyContent: 'center'
   },
   homeButtonContainer: {
-    height: '10%'
+    height: 80
   },
   homeButton: {
     left: 15,
@@ -1185,7 +1172,11 @@ const MindTransmutations = ({
     <View>
       <ImageBackground
         source={require('../assets/images/mind/blank-transmutations.png')}
-        style={[styles.backgroundImage, styles.paddedBackground]}
+        style={[
+          styles.backgroundImage,
+          styles.paddedBackground,
+          styles.transmutationsBackground
+        ]}
       >
         <AlchemistDisplay
           rank={rank}
@@ -1194,29 +1185,18 @@ const MindTransmutations = ({
           isUnlocking={isUnlocking}
           onLevelUp={onLevelUp}
         />
-        <View style={styles.mindTransmutationTree}>
-          <View style={[
-            styles.transmutationColumn,
-            styles.transmutationColumn1
-          ]}>
-            <Transmutation
-              name={'Reading'}
-              status={readingStatus}
-              onPress={onTransmutationPress}
-            />
-            <Transmutation
-              name={'Connect'}
-              status={connectStatus}
-              onPress={onTransmutationPress}
-            />
-          </View>
-          <View style={[
-            styles.transmutationColumn,
-            styles.transmutationColumn2
-          ]}>
+        <View style={styles.transmutationTree}>
+          <View style={styles.transmutationRow}>
             <Transmutation
               name={'Meditation'}
               status={meditationStatus}
+              onPress={onTransmutationPress}
+            />
+          </View>
+          <View style={styles.transmutationRow}>
+            <Transmutation
+              name={'Visualization'}
+              status={visualizationStatus}
               onPress={onTransmutationPress}
             />
             <Transmutation
@@ -1224,9 +1204,11 @@ const MindTransmutations = ({
               status={mindfulnessStatus}
               onPress={onTransmutationPress}
             />
+          </View>
+          <View style={styles.transmutationRow}>
             <Transmutation
-              name={'Visualization'}
-              status={visualizationStatus}
+              name={'Reading'}
+              status={readingStatus}
               onPress={onTransmutationPress}
             />
             <Transmutation
@@ -1235,23 +1217,27 @@ const MindTransmutations = ({
               onPress={onTransmutationPress}
             />
             <Transmutation
-              name={'Gratitude'}
-              status={gratitudeStatus}
+              name={'Passion'}
+              status={passionStatus}
               onPress={onTransmutationPress}
             />
           </View>
-          <View style={[
-            styles.transmutationColumn,
-            styles.transmutationColumn3
-          ]}>
+          <View style={styles.transmutationRow}>
             <Transmutation
-              name={'Passion'}
-              status={passionStatus}
+              name={'Connect'}
+              status={connectStatus}
               onPress={onTransmutationPress}
             />
             <Transmutation
               name={'Values'}
               status={valuesStatus}
+              onPress={onTransmutationPress}
+            />
+          </View>
+          <View style={styles.transmutationRow}>
+            <Transmutation
+              name={'Gratitude'}
+              status={gratitudeStatus}
               onPress={onTransmutationPress}
             />
           </View>
@@ -1284,7 +1270,11 @@ const BodyTransmutations = ({
     <View>
       <ImageBackground
         source={require('../assets/images/body/blank-transmutations.png')}
-        style={[styles.backgroundImage, styles.paddedBackground]}
+        style={[
+          styles.backgroundImage,
+          styles.paddedBackground,
+          styles.transmutationsBackground
+        ]}
       >
         <AlchemistDisplay
           rank={rank}
@@ -1293,15 +1283,15 @@ const BodyTransmutations = ({
           isUnlocking={isUnlocking}
           onLevelUp={onLevelUp}
         />
-        <View style={styles.bodyTransmutationTree}>
-          <View style={[styles.transmutationRow, styles.transmutationRow1]}>
+        <View style={styles.transmutationTree}>
+          <View style={styles.transmutationRow}>
             <Transmutation
               name={'Yoga'}
               status={yogaStatus}
               onPress={onTransmutationPress}
             />
           </View>
-          <View style={[styles.transmutationRow, styles.transmutationRow2]}>
+          <View style={styles.transmutationRow}>
             <Transmutation
               name={'Good Food'}
               status={goodFoodStatus}
@@ -1313,17 +1303,15 @@ const BodyTransmutations = ({
               onPress={onTransmutationPress}
             />
           </View>
-          <View style={[styles.transmutationRow, styles.transmutationRow3]}>
-             <Transmutation
-               name={'Fitness'}
-               status={fitnessStatus}
-               onPress={onTransmutationPress}
-            />
-          </View>
-          <View style={[styles.transmutationRow, styles.transmutationRow4]}>
+          <View style={styles.transmutationRow}>
             <Transmutation
               name={'Sunlight'}
               status={sunlightStatus}
+              onPress={onTransmutationPress}
+            />
+            <Transmutation
+              name={'Fitness'}
+              status={fitnessStatus}
               onPress={onTransmutationPress}
             />
             <Transmutation
@@ -1332,7 +1320,7 @@ const BodyTransmutations = ({
               onPress={onTransmutationPress}
             />
           </View>
-          <View style={[styles.transmutationRow, styles.transmutationRow5]}>
+          <View style={styles.transmutationRow}>
             <Transmutation
               name={'Supplement'}
               status={supplementStatus}
@@ -1344,7 +1332,7 @@ const BodyTransmutations = ({
               onPress={onTransmutationPress}
             />
           </View>
-          <View style={[styles.transmutationRow, styles.transmutationRow6]}>
+          <View style={styles.transmutationRow}>
             <Transmutation
               name={'Hydration'}
               status={hydrationStatus}

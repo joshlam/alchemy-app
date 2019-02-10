@@ -202,13 +202,13 @@ const styles = StyleSheet.create({
   },
   transmutationContainer: {
     alignItems: 'center',
-    height: 90,
+    height: 100,
     justifyContent: 'center',
     marginBottom: 0,
     marginLeft: 15,
     marginRight: 15,
     marginTop: 0,
-    width: 90,
+    width: 100,
     zIndex: 4
   },
   transmutation: {

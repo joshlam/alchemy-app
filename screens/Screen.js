@@ -32,6 +32,13 @@ const styles = StyleSheet.create({
   backgroundImageStyle: {
     resizeMode: 'center'
   },
+  contentContainer: {
+    paddingBottom: 30,
+    paddingVertical: 20
+  },
+  transmutationTemplate: {
+
+  },
   modal: {
 
   },
@@ -363,7 +370,8 @@ const styles = StyleSheet.create({
     width: 120
   },
   referencesSection: {
-    marginTop: 10
+    marginTop: 10,
+    paddingBottom: 10
   },
   referencesHeader: {
     color: 'black',
@@ -1576,7 +1584,7 @@ class TransmutationTemplate extends React.PureComponent {
     const {onBack, title, icon, headerContent, children } = this.props;
 
     return (
-      <View>
+      <View style={styles.transmutationTemplate}>
         <ImageBackground
           source={require('../assets/images/transmutation/background.png')}
           style={[styles.backgroundImage, styles.transmutationPage]}
@@ -1604,7 +1612,7 @@ const Tips = ({icon, tips, onBack}) => {
       title={'Tips'}
       icon={icon}
     >
-      <ScrollView>
+      <ScrollView contentContainerStyle={styles.contentContainer}>
         <Text style={styles.transmutationText}>{tips}</Text>
       </ScrollView>
     </TransmutationTemplate>
@@ -1618,7 +1626,7 @@ const More = ({icon, content, references, onBack}) => {
       title={'More...'}
       icon={icon}
     >
-      <ScrollView>
+      <ScrollView contentContainerStyle={styles.contentContainer}>
         <Text style={styles.transmutationText}>{content}</Text>
         <View style={styles.referencesSection}>
           <Text style={styles.referencesHeader}>References</Text>
@@ -1664,6 +1672,8 @@ class AlchemistDisplay extends React.PureComponent {
     this.closeLevelUpModal = this.closeLevelUpModal.bind(this);
     this.handleAscendConfirm = this.handleAscendConfirm.bind(this);
     this.handleLevelUpConfirm = this.handleLevelUpConfirm.bind(this);
+    this.closeAscendResult = this.closeAscendResult.bind(this);
+    this.closeLevelUpResult = this.closeLevelUpResult.bind(this);
   }
 
   get manaForLevel() {
@@ -1803,6 +1813,8 @@ class AlchemistDisplay extends React.PureComponent {
           isVisible={this.state.levelUpResultVisible}
           onBackButtonPress={this.closeLevelResult}
           onBackdropPress={this.closeLevelResult}
+          onSwipe={this.closeLevelResult}
+          swipeDirection={'left'}
         >
           <ImageBackground
             source={
@@ -1858,6 +1870,8 @@ class AlchemistDisplay extends React.PureComponent {
           isVisible={this.state.ascendResultVisible}
           onBackButtonPress={this.closeAscendResult}
           onBackdropPress={this.closeAscendResult}
+          onSwipe={this.closeAscendResult}
+          swipeDirection={'left'}
         >
           {this.AscendResult}
         </Modal>

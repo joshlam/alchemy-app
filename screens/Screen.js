@@ -23,18 +23,20 @@ const deviceWidth = Dimensions.get('window').width;
 const deviceHeight = Platform.OS === 'ios'
   ? Dimensions.get('window').height
   : require('react-native-extra-dimensions-android').get('REAL_WINDOW_HEIGHT');
+const fontSize = size => {
+  if (Platform.OS !== 'ios') return size;
+  if (size >= 30) return size - 8;
+
+  return size - 4;
+};
 
 const styles = StyleSheet.create({
   backgroundImage: {
     height: '100%',
     width: '100%'
   },
-  backgroundImageStyle: {
-    resizeMode: 'center'
-  },
-  contentContainer: {
-    paddingBottom: 30,
-    paddingVertical: 20
+  scrollView: {
+    flex: 1
   },
   transmutationTemplate: {
 
@@ -91,7 +93,7 @@ const styles = StyleSheet.create({
   loginInput: {
     backgroundColor: 'white',
     color: 'dimgrey',
-    fontSize: 18,
+    fontSize: fontSize(18),
     fontWeight: '400',
     marginBottom: 7,
     padding: 10
@@ -109,7 +111,7 @@ const styles = StyleSheet.create({
   },
   signInButtonText: {
     color: 'white',
-    fontSize: 20,
+    fontSize: fontSize(20),
     fontWeight: '600',
     textAlign: 'center'
   },
@@ -133,7 +135,7 @@ const styles = StyleSheet.create({
   },
   alchemistDisplayText: {
     color: 'yellow',
-    fontSize: 24,
+    fontSize: fontSize(24),
     textAlign: 'center'
   },
   manaBar: {
@@ -141,7 +143,7 @@ const styles = StyleSheet.create({
   },
   manaText: {
     color: 'white',
-    fontSize: 18,
+    fontSize: fontSize(18),
     textAlign: 'left'
   },
   ascend: {
@@ -185,6 +187,7 @@ const styles = StyleSheet.create({
   mindTransmutationTree: {
     alignItems: 'flex-end',
     flexDirection: 'row',
+    height: '90%',
     justifyContent: 'space-between'
   },
   bodyTransmutationTree: {
@@ -279,10 +282,14 @@ const styles = StyleSheet.create({
 
   },
   transmutationPage: {
-    padding: 10
+    padding: 10,
+    paddingTop: 20
+  },
+  transmutationPageBackground: {
+
   },
   transmutationHeader: {
-    height: 80
+    height: '10%'
   },
   transmutationTop: {
     flexDirection: 'row',
@@ -298,43 +305,43 @@ const styles = StyleSheet.create({
   },
   transmutationMana: {
     color: 'rgba(0,195,255,1)',
-    fontSize: 32,
+    fontSize: fontSize(32),
     fontWeight: '600',
-    right: -15,
     textShadowColor: 'black',
-    textShadowOffset: {width: 2, height: 3},
-    textShadowRadius: 10,
-    width: '28%'
+    textShadowOffset: {width: -1, height: 3},
+    textShadowRadius: 1
   },
   transmutationTitle: {
     alignItems: 'center',
-    justifyContent: 'center'
+    top: -7
   },
   transmutationTitleText: {
     color: 'black',
-    fontSize: 54,
+    fontSize: fontSize(54),
     fontWeight: '600',
     textAlign: 'center'
   },
   transmutationIcon: {
-    alignItems: 'center'
+    alignItems: 'center',
+    justifyContent: 'center'
   },
   transmutationIconImage: {
     height: 120,
     width: 120
   },
   transmutationBody: {
-
+    flex: 1
   },
   transmutationInstructions: {
     color: 'black',
-    fontSize: 32,
-    textAlign: 'center'
+    fontSize: fontSize(32) - (Platform.OS === 'ios' ? 3 : 0),
+    textAlign: 'center',
+    top: -5
   },
   transmute: {
     alignItems: 'center',
-    marginBottom: 25,
-    marginTop: 20
+    marginBottom: 10,
+    marginTop: 10
   },
   transmuteButton: {
     height: 65,
@@ -347,12 +354,12 @@ const styles = StyleSheet.create({
   },
   effectsTitleText: {
     color: 'black',
-    fontSize: 42,
+    fontSize: fontSize(42),
     marginLeft: 5
   },
   transmutationText: {
     color: 'black',
-    fontSize: 20
+    fontSize: fontSize(20)
   },
   expandTransmutation: {
     flexDirection: 'row',
@@ -375,7 +382,7 @@ const styles = StyleSheet.create({
   },
   referencesHeader: {
     color: 'black',
-    fontSize: 36
+    fontSize: fontSize(36)
   }
 });
 
@@ -1588,6 +1595,7 @@ class TransmutationTemplate extends React.PureComponent {
         <ImageBackground
           source={require('../assets/images/transmutation/background.png')}
           style={[styles.backgroundImage, styles.transmutationPage]}
+          imageStyle={styles.transmutationPageBackground}
         >
           <TransmutationHeader onBack={onBack} title={title}>
             {headerContent}
@@ -1612,7 +1620,7 @@ const Tips = ({icon, tips, onBack}) => {
       title={'Tips'}
       icon={icon}
     >
-      <ScrollView contentContainerStyle={styles.contentContainer}>
+      <ScrollView style={styles.scrollView}>
         <Text style={styles.transmutationText}>{tips}</Text>
       </ScrollView>
     </TransmutationTemplate>
@@ -1626,7 +1634,7 @@ const More = ({icon, content, references, onBack}) => {
       title={'More...'}
       icon={icon}
     >
-      <ScrollView contentContainerStyle={styles.contentContainer}>
+      <ScrollView style={styles.scrollView}>
         <Text style={styles.transmutationText}>{content}</Text>
         <View style={styles.referencesSection}>
           <Text style={styles.referencesHeader}>References</Text>

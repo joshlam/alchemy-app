@@ -1,7 +1,6 @@
 import React from 'react';
 import { AsyncStorage } from 'react-native';
 
-import AlchemistDisplay from './AlchemistDisplay';
 import Home from './Home';
 import Login from './Login';
 import More from './More';
@@ -10,7 +9,6 @@ import TransmutationPage from './TransmutationPage';
 import Transmutations from './Transmutations';
 
 import { idFor } from 'Alchemy/lib/helpers';
-import { deviceHeight, deviceWidth, fontSize } from 'Alchemy/lib/sizes';
 import { playSound, loopSound } from 'Alchemy/services/sound';
 import ICONS from 'Alchemy/styles/icons';
 

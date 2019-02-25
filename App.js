@@ -3,6 +3,15 @@ import { StatusBar, StyleSheet, View } from 'react-native';
 
 import Screen from './screens/Screen';
 
+const white = '#fff';
+
+const styles = StyleSheet.create({
+  container: {
+    backgroundColor: white,
+    flex: 1
+  }
+});
+
 export default class App extends React.Component {
   render() {
     return (
@@ -13,10 +22,3 @@ export default class App extends React.Component {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    backgroundColor: '#fff',
-    flex: 1
-  }
-});

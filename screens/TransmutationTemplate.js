@@ -8,7 +8,6 @@ import {
 } from 'react-native';
 
 import TransmutationHeader from './TransmutationHeader';
-import { fontSize } from 'Alchemy/lib/sizes';
 import withSharedStyles from 'Alchemy/lib/styles';
 
 const styles = withSharedStyles({

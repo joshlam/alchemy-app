@@ -8,9 +8,9 @@ import Tips from './Tips';
 import TransmutationPage from './TransmutationPage';
 import Transmutations from './Transmutations';
 
-import { idFor } from 'Alchemy/lib/helpers';
-import { playSound, loopSound } from 'Alchemy/services/sound';
-import ICONS from 'Alchemy/styles/icons';
+import { idFor } from 'src/lib/helpers';
+import { playSound, loopSound } from 'src/services/sound';
+import ICONS from 'src/styles/icons';
 
 export default class Screen extends React.Component {
   constructor(props) {

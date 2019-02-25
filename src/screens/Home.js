@@ -2,7 +2,7 @@ import React from 'react';
 import { ImageBackground, TouchableOpacity, View } from 'react-native';
 
 import AlchemistDisplay from './AlchemistDisplay';
-import withSharedStyles from 'Alchemy/lib/styles';
+import withSharedStyles from 'src/lib/styles';
 
 const styles = withSharedStyles({
   homePage: {
@@ -37,7 +37,7 @@ export default ({
   return (
     <View>
       <ImageBackground
-        source={require('../assets/images/home-screen-core.png')}
+        source={require('src/images/home-screen-core.png')}
         style={[
           styles.backgroundImage,
           styles.paddedBackground,

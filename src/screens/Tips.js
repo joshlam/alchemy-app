@@ -3,7 +3,7 @@ import { Text } from 'react-native';
 
 import TransmutationTemplate from './TransmutationTemplate';
 import YogaTips from './YogaTips';
-import styles from 'Alchemy/styles/shared';
+import styles from 'src/styles/shared';
 
 export default ({isYoga, icon, tips, onBack}) => {
   return (

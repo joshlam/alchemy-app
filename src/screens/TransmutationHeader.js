@@ -2,8 +2,8 @@ import React from 'react';
 import { Text, View } from 'react-native';
 
 import BackButton from './BackButton';
-import { fontSize } from 'Alchemy/lib/sizes';
-import withSharedStyles from 'Alchemy/lib/styles';
+import { fontSize } from 'src/lib/sizes';
+import withSharedStyles from 'src/lib/styles';
 
 const styles = withSharedStyles({
   transmutationTop: {

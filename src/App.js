@@ -1,7 +1,7 @@
 import React from 'react';
 import { StatusBar, StyleSheet, View } from 'react-native';
 
-import Screen from './screens/Screen';
+import Screen from 'src/screens/Screen';
 
 const white = '#fff';
 

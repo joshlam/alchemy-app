@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
 
-import { fontSize } from 'Alchemy/lib/sizes';
+import { fontSize } from 'src/lib/sizes';
 
 export default StyleSheet.create({
   backgroundImage: {

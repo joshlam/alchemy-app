@@ -1,9 +1,9 @@
 import React from 'react';
 import { Image, TouchableOpacity } from 'react-native';
 
-import { idFor } from 'Alchemy/lib/helpers';
-import withSharedStyles from 'Alchemy/lib/styles';
-import ICONS from 'Alchemy/styles/icons';
+import { idFor } from 'src/lib/helpers';
+import withSharedStyles from 'src/lib/styles';
+import ICONS from 'src/styles/icons';
 
 const styles = withSharedStyles({
   transmutationContainer: {

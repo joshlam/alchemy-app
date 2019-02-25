@@ -1,7 +1,7 @@
 import React from 'react';
 import { Image, TouchableOpacity, View } from 'react-native';
 
-import withSharedStyles from 'Alchemy/lib/styles';
+import withSharedStyles from 'src/lib/styles';
 
 const styles = withSharedStyles({
   homeButtonContainer: {
@@ -23,7 +23,7 @@ export default ({onPress}) => {
       <TouchableOpacity style={styles.homeButton} onPress={onPress}>
         <Image
           style={styles.homeButtonImage}
-          source={require('../assets/images/home-button.png')}
+          source={require('src/images/home-button.png')}
         />
       </TouchableOpacity>
     </View>

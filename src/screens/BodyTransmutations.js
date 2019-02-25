@@ -4,7 +4,7 @@ import { ImageBackground, View } from 'react-native';
 import AlchemistDisplay from './AlchemistDisplay';
 import HomeButton from './HomeButton';
 import Transmutation from './Transmutation';
-import styles from 'Alchemy/styles/transmutations';
+import styles from 'src/styles/transmutations';
 
 export default ({
   rank,
@@ -27,7 +27,7 @@ export default ({
   return (
     <View>
       <ImageBackground
-        source={require('../assets/images/body/blank-transmutations.png')}
+        source={require('src/images/body/blank-transmutations.png')}
         style={[
           styles.backgroundImage,
           styles.paddedBackground,

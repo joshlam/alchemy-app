@@ -1,7 +1,7 @@
 import React from 'react';
 import { Image, TouchableOpacity } from 'react-native';
 
-import withSharedStyles from 'Alchemy/lib/styles';
+import withSharedStyles from 'src/lib/styles';
 
 const styles = withSharedStyles({
   backButton: {
@@ -19,7 +19,7 @@ export default ({onPress}) => {
     <TouchableOpacity style={styles.backButton} onPress={onPress}>
       <Image
         style={[styles.backButtonImage]}
-        source={require('../assets/images/transmutation/back-button.png')}
+        source={require('src/images/transmutation/back-button.png')}
       />
     </TouchableOpacity>
   );

@@ -1,5 +1,5 @@
-import { deviceHeight } from 'Alchemy/lib/sizes';
-import withSharedStyles from 'Alchemy/lib/styles';
+import { deviceHeight } from 'src/lib/sizes';
+import withSharedStyles from 'src/lib/styles';
 
 export default withSharedStyles({
   transmutationsBackground: {

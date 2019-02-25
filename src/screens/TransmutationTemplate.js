@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 
 import TransmutationHeader from './TransmutationHeader';
-import withSharedStyles from 'Alchemy/lib/styles';
+import withSharedStyles from 'src/lib/styles';
 
 const styles = withSharedStyles({
   transmutationTemplate: {
@@ -50,14 +50,14 @@ export default class TransmutationTemplate extends React.PureComponent {
     return (
       <View style={styles.transmutationTemplate}>
         <ImageBackground
-          source={require('../assets/images/transmutation/background.png')}
+          source={require('src/images/transmutation/background.png')}
           style={[styles.backgroundImage, styles.transmutationPage]}
         >
           <TransmutationHeader onBack={onBack} title={title}>
             {headerContent}
           </TransmutationHeader>
           <ImageBackground
-            source={require('../assets/images/transmutation/divider.png')}
+            source={require('src/images/transmutation/divider.png')}
             style={styles.transmutationDivider}
             imageStyle={styles.transmutationDividerImage}
           >

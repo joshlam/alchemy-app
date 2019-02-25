@@ -9,9 +9,9 @@ import {
 import Modal from 'react-native-modal';
 import * as Progress from 'react-native-progress';
 
-import { deviceHeight, deviceWidth, fontSize } from 'Alchemy/lib/sizes';
-import withSharedStyles from 'Alchemy/lib/styles';
-import { playSound } from 'Alchemy/services/sound';
+import { deviceHeight, deviceWidth, fontSize } from 'src/lib/sizes';
+import withSharedStyles from 'src/lib/styles';
+import { playSound } from 'src/services/sound';
 
 const styles = withSharedStyles({
   levelModalButtons: {
@@ -85,7 +85,7 @@ class LevelUp extends React.PureComponent {
       <TouchableOpacity style={styles.levelUp} onPress={this.props.onLevelUp}>
         <Image
           style={styles.levelUpImage}
-          source={require('../assets/images/level-up.png')}
+          source={require('src/images/level-up.png')}
         />
       </TouchableOpacity>
     );
@@ -102,7 +102,7 @@ class Ascend extends React.PureComponent {
       <TouchableOpacity style={styles.ascend} onPress={this.props.onAscend}>
         <Image
           style={styles.ascendImage}
-          source={require('../assets/images/ascend.png')}
+          source={require('src/images/ascend.png')}
         />
       </TouchableOpacity>
     );
@@ -161,9 +161,7 @@ export default class AlchemistDisplay extends React.PureComponent {
     if (this.props.rank === 'Acolyte') {
       return (
         <ImageBackground
-          source={
-            require('../assets/images/ascend/acolyte.png')
-          }
+          source={require('src/images/ascend/acolyte.png')}
           style={styles.modalBackground}
           imageStyle={styles.modalBackgroundImage}
         />
@@ -172,9 +170,7 @@ export default class AlchemistDisplay extends React.PureComponent {
 
     return (
       <ImageBackground
-        source={
-          require('../assets/images/ascend/alchemist.png')
-        }
+        source={require('src/images/ascend/alchemist.png')}
         style={styles.modalBackground}
         imageStyle={styles.modalBackgroundImage}
       />
@@ -232,9 +228,7 @@ export default class AlchemistDisplay extends React.PureComponent {
           onBackdropPress={this.closeLevelUpModal}
         >
           <ImageBackground
-            source={
-              require('../assets/images/level/window.png')
-            }
+            source={require('src/images/level/window.png')}
             style={styles.modalBackground}
             imageStyle={styles.modalBackgroundImage}
           >
@@ -245,7 +239,7 @@ export default class AlchemistDisplay extends React.PureComponent {
               >
                 <Image
                   style={styles.modalButtonImage}
-                  source={require('../assets/images/level/no-button.png')}
+                  source={require('src/images/level/no-button.png')}
                 />
               </TouchableOpacity>
               <TouchableOpacity
@@ -254,7 +248,7 @@ export default class AlchemistDisplay extends React.PureComponent {
               >
                 <Image
                   style={styles.modalButtonImage}
-                  source={require('../assets/images/level/yes-button.png')}
+                  source={require('src/images/level/yes-button.png')}
                 />
               </TouchableOpacity>
             </View>
@@ -271,9 +265,7 @@ export default class AlchemistDisplay extends React.PureComponent {
           swipeDirection={'left'}
         >
           <ImageBackground
-            source={
-              require('../assets/images/level/result.png')
-            }
+            source={require('src/images/level/result.png')}
             style={styles.modalBackground}
             imageStyle={styles.modalBackgroundImage}
           >
@@ -289,9 +281,7 @@ export default class AlchemistDisplay extends React.PureComponent {
           onBackdropPress={this.closeAscendModal}
         >
           <ImageBackground
-            source={
-              require('../assets/images/ascend/window.png')
-            }
+            source={require('src/images/ascend/window.png')}
             style={styles.modalBackground}
             imageStyle={styles.modalBackgroundImage}
           >
@@ -302,7 +292,7 @@ export default class AlchemistDisplay extends React.PureComponent {
               >
                 <Image
                   style={styles.modalButtonImage}
-                  source={require('../assets/images/ascend/wait-button.png')}
+                  source={require('src/images/ascend/wait-button.png')}
                 />
               </TouchableOpacity>
               <TouchableOpacity
@@ -311,7 +301,7 @@ export default class AlchemistDisplay extends React.PureComponent {
               >
                 <Image
                   style={styles.modalButtonImage}
-                  source={require('../assets/images/ascend/ready-button.png')}
+                  source={require('src/images/ascend/ready-button.png')}
                 />
               </TouchableOpacity>
             </View>

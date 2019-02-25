@@ -10,8 +10,8 @@ import {
 import Modal from 'react-native-modal';
 
 import TransmutationTemplate from './TransmutationTemplate';
-import { deviceHeight, deviceWidth, fontSize } from 'Alchemy/lib/sizes';
-import withSharedStyles from 'Alchemy/lib/styles';
+import { deviceHeight, deviceWidth, fontSize } from 'src/lib/sizes';
+import withSharedStyles from 'src/lib/styles';
 
 const styles = withSharedStyles({
   transmutationMana: {
@@ -86,7 +86,7 @@ export default class TransmutationPage extends React.Component {
         return (
           <Image
             style={styles.transmuteButton}
-            source={require('../assets/images/transmutation/locked.png')}
+            source={require('src/images/transmutation/locked.png')}
           />
         );
       case 'UNLOCKABLE':
@@ -94,9 +94,7 @@ export default class TransmutationPage extends React.Component {
           <TouchableOpacity onPress={this.handleUnlock}>
             <Image
               style={styles.transmuteButton}
-              source={
-                require('../assets/images/transmutation/unlock-button.png')
-              }
+              source={require('src/images/transmutation/unlock-button.png')}
             />
           </TouchableOpacity>
         );
@@ -105,7 +103,7 @@ export default class TransmutationPage extends React.Component {
           return (
             <Image
               style={styles.transmuteButton}
-              source={require('../assets/images/transmutation/unlocked.png')}
+              source={require('src/images/transmutation/unlocked.png')}
             />
           );
         }
@@ -114,9 +112,7 @@ export default class TransmutationPage extends React.Component {
           <TouchableOpacity onPress={this.handleTransmute}>
             <Image
               style={styles.transmuteButton}
-              source={
-                require('../assets/images/transmutation/transmute-button.png')
-              }
+              source={require('src/images/transmutation/transmute-button.png')}
             />
           </TouchableOpacity>
         );
@@ -125,7 +121,7 @@ export default class TransmutationPage extends React.Component {
           return (
             <Image
               style={styles.transmuteButton}
-              source={require('../assets/images/transmutation/unlocked.png')}
+              source={require('src/images/transmutation/unlocked.png')}
             />
           );
         }
@@ -133,7 +129,7 @@ export default class TransmutationPage extends React.Component {
         return (
           <Image
             style={styles.transmuteButton}
-            source={require('../assets/images/transmutation/complete.png')}
+            source={require('src/images/transmutation/complete.png')}
           />
         );
     }
@@ -198,9 +194,7 @@ export default class TransmutationPage extends React.Component {
           onBackdropPress={this.closeUnlockModal}
         >
           <ImageBackground
-            source={
-              require('../assets/images/transmutation/unlock-background.png')
-            }
+            source={require('src/images/transmutation/unlock-background.png')}
             style={styles.modalBackground}
             imageStyle={styles.modalBackgroundImage}
           >
@@ -211,7 +205,7 @@ export default class TransmutationPage extends React.Component {
               >
                 <Image
                   style={styles.modalButtonImage}
-                  source={require('../assets/images/transmutation/no-button.png')}
+                  source={require('src/images/transmutation/no-button.png')}
                 />
               </TouchableOpacity>
               <TouchableOpacity
@@ -220,7 +214,7 @@ export default class TransmutationPage extends React.Component {
               >
                 <Image
                   style={styles.modalButtonImage}
-                  source={require('../assets/images/transmutation/yes-button.png')}
+                  source={require('src/images/transmutation/yes-button.png')}
                 />
               </TouchableOpacity>
             </View>
@@ -236,7 +230,7 @@ export default class TransmutationPage extends React.Component {
         >
           <ImageBackground
             source={
-              require('../assets/images/transmutation/transmute-background.png')
+              require('src/images/transmutation/transmute-background.png')
             }
             style={styles.modalBackground}
             imageStyle={styles.modalBackgroundImage}
@@ -248,7 +242,9 @@ export default class TransmutationPage extends React.Component {
               >
                 <Image
                   style={styles.modalButtonImage}
-                  source={require('../assets/images/transmutation/not-yet-button.png')}
+                  source={
+                    require('src/images/transmutation/not-yet-button.png')
+                  }
                 />
               </TouchableOpacity>
               <TouchableOpacity
@@ -257,7 +253,7 @@ export default class TransmutationPage extends React.Component {
               >
                 <Image
                   style={styles.modalButtonImage}
-                  source={require('../assets/images/transmutation/yes-button.png')}
+                  source={require('src/images/transmutation/yes-button.png')}
                 />
               </TouchableOpacity>
             </View>
@@ -277,13 +273,13 @@ export default class TransmutationPage extends React.Component {
           <TouchableOpacity style={styles.expandButton} onPress={openTips}>
             <Image
               style={styles.expandButtonImage}
-              source={require('../assets/images/transmutation/tips-button.png')}
+              source={require('src/images/transmutation/tips-button.png')}
             />
           </TouchableOpacity>
           <TouchableOpacity style={styles.expandButton} onPress={openMore}>
             <Image
               style={styles.expandButtonImage}
-              source={require('../assets/images/transmutation/more-button.png')}
+              source={require('src/images/transmutation/more-button.png')}
             />
           </TouchableOpacity>
         </View>

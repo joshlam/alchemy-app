@@ -7,8 +7,8 @@ import {
   View
 } from 'react-native';
 
-import { fontSize } from 'Alchemy/lib/sizes';
-import withSharedStyles from 'Alchemy/lib/styles';
+import { fontSize } from 'src/lib/sizes';
+import withSharedStyles from 'src/lib/styles';
 
 const styles = withSharedStyles({
   loginScreen: {
@@ -69,7 +69,7 @@ export default ({
   return (
     <ImageBackground
       style={styles.backgroundImage}
-      source={require('../assets/images/login.png')}
+      source={require('src/images/login.png')}
     >
       <View style={styles.loginScreen}>
         <LoginError display={displayLoginError} />

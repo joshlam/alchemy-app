@@ -1,5 +1,5 @@
 import React from 'react';
-import { AsyncStorage } from 'react-native';
+import { AsyncStorage, BackHandler } from 'react-native';
 
 import Home from './Home';
 import Login from './Login';
@@ -9,7 +9,7 @@ import TransmutationPage from './TransmutationPage';
 import Transmutations from './Transmutations';
 
 import { idFor } from 'src/lib/helpers';
-import { playSound, loopSound } from 'src/services/sound';
+import { playSound } from 'src/services/sound';
 import ICONS from 'src/styles/icons';
 
 export default class Screen extends React.Component {
@@ -31,6 +31,7 @@ export default class Screen extends React.Component {
       canAscend: false
     };
 
+    this.handleBackPress = this.handleBackPress.bind(this);
     this.handleUsernameChange = this.handleUsernameChange.bind(this);
     this.handlePasswordChange = this.handlePasswordChange.bind(this);
     this.handleSignIn = this.handleSignIn.bind(this);
@@ -44,7 +45,7 @@ export default class Screen extends React.Component {
     this.openTips = this.openTips.bind(this);
     this.openMore = this.openMore.bind(this);
     this.returnToTransmutations = this.returnToTransmutations.bind(this);
-    this.goBack = this.goBack.bind(this);
+    this.returnToTransmutation = this.returnToTransmutation.bind(this);
     this.levelUp = this.levelUp.bind(this);
     this.transmute = this.transmute.bind(this);
     this.unlock = this.unlock.bind(this);
@@ -52,7 +53,35 @@ export default class Screen extends React.Component {
   }
 
   componentDidMount() {
+    BackHandler.addEventListener('hardwareBackPress', this.handleBackPress);
+
     this.retrieveLogin();
+  }
+
+  componentWillUnmount() {
+    BackHandler.removeEventListener('hardwareBackPress', this.handleBackPress);
+  }
+
+  handleBackPress() {
+    const screen = this.state.screen;
+
+    if (!screen || screen === 'Login' || screen === 'Home') return false;
+
+    switch (screen) {
+      case 'Transmutations':
+        this.openHome();
+        break;
+      case 'Transmutation':
+        this.returnToTransmutations();
+        break;
+      case 'Tips':
+      case 'More':
+        this.returnToTransmutation();
+        break;
+      default: return false;
+    }
+
+    return true;
   }
 
   async retrieveLogin() {
@@ -116,13 +145,7 @@ export default class Screen extends React.Component {
         });
 
         this.fetchAlchemist().then(() => {
-          loopSound('home');
-
-          this.setState({
-            previousScreen: this.state.screen,
-            screen: 'Home',
-            signedIn: true
-          });
+          this.setState({screen: 'Home', signedIn: true});
         });
 
         this.storeLogin(username, password);
@@ -181,26 +204,14 @@ export default class Screen extends React.Component {
   openMindTransmutations() {
     this.fetchTransmutations()
       .then(() => {
-        loopSound('transmutations');
-
-        this.setState({
-          transmutationCategory: 0,
-          previousScreen: this.state.screen,
-          screen: 'Transmutations'
-        });
+        this.setState({transmutationCategory: 0, screen: 'Transmutations'});
       });
   }
 
   openBodyTransmutations() {
     this.fetchTransmutations()
       .then(() => {
-        loopSound('transmutations');
-
-        this.setState({
-          transmutationCategory: 1,
-          previousScreen: this.state.screen,
-          screen: 'Transmutations'
-        });
+        this.setState({transmutationCategory: 1, screen: 'Transmutations'});
       });
   }
 
@@ -211,7 +222,6 @@ export default class Screen extends React.Component {
       .then(() => {
         this.setState({
           transmutationCategory: categoryFor(name),
-          previousScreen: this.state.screen,
           screen: 'Transmutation'
         });
       });
@@ -220,39 +230,31 @@ export default class Screen extends React.Component {
   openHome() {
     playSound('button_home');
 
-    loopSound('home');
-
-    this.setState({previousScreen: this.state.screen, screen: 'Home'});
+    this.setState({screen: 'Home'});
   }
 
   openTips() {
     playSound('button_tips');
 
-    this.setState({previousScreen: this.state.screen, screen: 'Tips'});
+    this.setState({screen: 'Tips'});
   }
 
   openMore() {
     playSound('button_more');
 
-    this.setState({previousScreen: this.state.screen, screen: 'More'});
+    this.setState({screen: 'More'});
   }
 
   returnToTransmutations() {
     playSound('button_back');
 
-    this.setState({
-      previousScreen: this.state.screen,
-      screen: 'Transmutations'
-    });
+    this.setState({screen: 'Transmutations'});
   }
 
-  goBack() {
+  returnToTransmutation() {
     playSound('button_back');
 
-    this.setState({
-      previousScreen: this.state.screen,
-      screen: this.state.previousScreen
-    });
+    this.setState({screen: 'Transmutation'});
   }
 
   unlock(transmutation) {
@@ -284,7 +286,6 @@ export default class Screen extends React.Component {
               [unlockCategory]: false,
               unlocking: false,
               transmutationCategory: nextCategory,
-              previousScreen: this.state.screen,
               screen: 'Transmutations'
             });
           });
@@ -470,7 +471,7 @@ export default class Screen extends React.Component {
           isYoga={name === 'Yoga'}
           icon={ICONS[name][this.state[name]]}
           tips={transmutation.tips}
-          onBack={this.goBack}
+          onBack={this.returnToTransmutation}
         />
       );
     }
@@ -483,7 +484,7 @@ export default class Screen extends React.Component {
           icon={ICONS[name][this.state[name]]}
           content={transmutation.more}
           references={transmutation.references}
-          onBack={this.goBack}
+          onBack={this.returnToTransmutation}
         />
       );
     }

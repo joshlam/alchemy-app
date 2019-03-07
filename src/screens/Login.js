@@ -79,6 +79,7 @@ export default ({
             styles.loginInput,
             styles.usernameInput
           ]}
+          placeholder={'Username'}
           value={username}
           onChangeText={onChangeUsername}
         />
@@ -88,6 +89,7 @@ export default ({
             styles.loginInput,
             styles.passwordInput
           ]}
+          placeholder={'Password'}
           value={password}
           secureTextEntry={true}
           onChangeText={onChangePassword}

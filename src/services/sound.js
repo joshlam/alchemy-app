@@ -19,3 +19,15 @@ export function loopSound(file, extension = 'wav') {
     error => backgroundMusic.setNumberOfLoops(-1).play()
   );
 }
+
+export function pauseSound() {
+  if (!backgroundMusic) return;
+
+  backgroundMusic.stop();
+}
+
+export function resumeSound() {
+  if (!backgroundMusic) return;
+
+  backgroundMusic.setNumberOfLoops(-1).play();
+}

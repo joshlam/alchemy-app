@@ -8,6 +8,9 @@ export default ({
   rank,
   level,
   mana,
+  manaForLevel,
+  canTranscend,
+  canAscend,
   onLevelUp,
   onPageChange,
   onHomePress,
@@ -44,6 +47,9 @@ export default ({
         rank={rank}
         level={level}
         mana={mana}
+        manaForLevel={manaForLevel}
+        canTranscend={canTranscend}
+        canAscend={canAscend}
         onLevelUp={onLevelUp}
         onHomePress={onHomePress}
         onTransmutationPress={onTransmutationPress}
@@ -62,6 +68,9 @@ export default ({
         rank={rank}
         level={level}
         mana={mana}
+        manaForLevel={manaForLevel}
+        canTranscend={canTranscend}
+        canAscend={canAscend}
         onLevelUp={onLevelUp}
         onHomePress={onHomePress}
         onTransmutationPress={onTransmutationPress}

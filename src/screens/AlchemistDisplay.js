@@ -9,9 +9,10 @@ import {
 import Modal from 'react-native-modal';
 import * as Progress from 'react-native-progress';
 
+import LevelUp from 'src/screens/LevelUp';
+import Ascend from 'src/screens/Ascend';
 import { deviceHeight, deviceWidth, fontSize } from 'src/lib/sizes';
 import withSharedStyles from 'src/lib/styles';
-import { playSound } from 'src/services/sound';
 
 const styles = withSharedStyles({
   levelModalButtons: {
@@ -48,66 +49,8 @@ const styles = withSharedStyles({
     color: 'white',
     fontSize: fontSize(18),
     textAlign: 'left'
-  },
-  ascend: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    zIndex: 3
-  },
-  ascendImage: {
-    height: 150,
-    width: 150
-  },
-  levelUp: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    zIndex: 3
-  },
-  levelUpImage: {
-    height: 150,
-    width: 150
   }
 });
-
-function manaFor(level, rank) {
-  if (rank === 'Alchemist' && level === 11) return 0;
-
-  return level * 10;
-}
-
-class LevelUp extends React.PureComponent {
-  componentDidMount() {
-    playSound('level_up_alert');
-  }
-
-  render() {
-    return (
-      <TouchableOpacity style={styles.levelUp} onPress={this.props.onLevelUp}>
-        <Image
-          style={styles.levelUpImage}
-          source={require('src/images/level-up.png')}
-        />
-      </TouchableOpacity>
-    );
-  }
-}
-
-class Ascend extends React.PureComponent {
-  componentDidMount() {
-    playSound('ascend_alert', 'mp3');
-  }
-
-  render() {
-    return (
-      <TouchableOpacity style={styles.ascend} onPress={this.props.onAscend}>
-        <Image
-          style={styles.ascendImage}
-          source={require('src/images/ascend.png')}
-        />
-      </TouchableOpacity>
-    );
-  }
-}
 
 export default class AlchemistDisplay extends React.PureComponent {
   constructor(props) {
@@ -130,27 +73,10 @@ export default class AlchemistDisplay extends React.PureComponent {
     this.closeLevelUpResult = this.closeLevelUpResult.bind(this);
   }
 
-  get manaForLevel() {
-    return manaFor(this.props.level, this.props.rank);
-  }
-
-  get ascendAvailable() {
-    const {level, rank} = this.props;
-
-    return this.levelUpAvailable && level === 10 && rank !== 'Alchemist';
-  }
-
-  get levelUpAvailable() {
-    const {mana, isUnlocking} = this.props;
-    const manaForLevel = this.manaForLevel;
-
-    return !isUnlocking && manaForLevel && mana >= manaForLevel;
-  }
-
   get Transcend() {
-    if (this.ascendAvailable) return <Ascend onAscend={this.handleAscend} />;
+    if (this.props.canAscend) return <Ascend onAscend={this.handleAscend} />;
 
-    if (this.levelUpAvailable) {
+    if (this.props.canTranscend) {
       return <LevelUp onLevelUp={this.handleLevelUp} />;
     }
 
@@ -214,8 +140,7 @@ export default class AlchemistDisplay extends React.PureComponent {
   }
 
   render() {
-    const {level, mana, rank} = this.props;
-    const manaForLevel = this.manaForLevel;
+    const {level, mana, rank, manaForLevel} = this.props;
 
     return (
       <View style={styles.alchemistDisplayContainer}>

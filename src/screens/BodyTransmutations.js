@@ -10,6 +10,9 @@ export default ({
   rank,
   level,
   mana,
+  manaForLevel,
+  canTranscend,
+  canAscend,
   onLevelUp,
   onHomePress,
   onTransmutationPress,
@@ -38,6 +41,9 @@ export default ({
           rank={rank}
           level={level}
           mana={mana}
+          manaForLevel={manaForLevel}
+          canTranscend={canTranscend}
+          canAscend={canAscend}
           isUnlocking={isUnlocking}
           onLevelUp={onLevelUp}
         />

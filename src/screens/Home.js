@@ -30,6 +30,9 @@ export default ({
   rank,
   level,
   mana,
+  manaForLevel,
+  canTranscend,
+  canAscend,
   openMindTransmutations,
   openBodyTransmutations,
   onLevelUp
@@ -50,6 +53,9 @@ export default ({
             rank={rank}
             level={level}
             mana={mana}
+            manaForLevel={manaForLevel}
+            canTranscend={canTranscend}
+            canAscend={canAscend}
           />
         }
         <View style={styles.openTransmutations}>

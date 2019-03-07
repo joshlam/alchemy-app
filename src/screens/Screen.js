@@ -27,7 +27,9 @@ export default class Screen extends React.Component {
       transmuting: false,
       transmutationCategory: 0,
       bodyUnlock: false,
-      mindUnlock: false
+      mindUnlock: false,
+      canTranscend: false,
+      canAscend: false
     };
 
     this.handleUsernameChange = this.handleUsernameChange.bind(this);
@@ -134,14 +136,7 @@ export default class Screen extends React.Component {
         }
       }).then(response => response.json())
         .then(alchemist => {
-          this.setState({
-            alchemistFetched: true,
-            rank: normalizeRank(alchemist.rank),
-            level: alchemist.level,
-            mana: alchemist.mana,
-            mindUnlock: alchemist.mind_unlock,
-            bodyUnlock: alchemist.body_unlock
-          });
+          this.setState({alchemistFetched: true, ...alchemistState(alchemist)});
         })
     );
   }
@@ -305,10 +300,13 @@ export default class Screen extends React.Component {
         'Content-Type': 'application/json'
       }
     }).then(response => response.json())
-      .then(json => {
+      .then(alchemist => {
         playSound(`transmute_${idFor(transmutation)}`, 'mp3');
 
-        this.setState({mana: json.mana, [transmutation]: 'COMPLETE'});
+        this.setState({
+          [transmutation]: 'COMPLETE',
+          ...alchemistState(alchemist)
+        });
       });
   }
 
@@ -325,13 +323,7 @@ export default class Screen extends React.Component {
       .then(alchemist => {
         playSound(ascending ? 'ascend_accept' : 'level_up_accept', 'mp3');
 
-        this.setState({
-          rank: normalizeRank(alchemist.rank),
-          level: alchemist.level,
-          mana: alchemist.mana,
-          mindUnlock: alchemist.mind_unlock,
-          bodyUnlock: alchemist.body_unlock
-        });
+        this.setState(alchemistState(alchemist));
 
         this.fetchTransmutations()
           .then(() => this.setState({levelingUp: false}));
@@ -364,6 +356,9 @@ export default class Screen extends React.Component {
       rank,
       level,
       mana,
+      manaForLevel,
+      canTranscend,
+      canAscend,
       screen,
       mindUnlock,
       bodyUnlock,
@@ -395,6 +390,9 @@ export default class Screen extends React.Component {
           rank={rank}
           level={level}
           mana={mana}
+          manaForLevel={manaForLevel}
+          canTranscend={canTranscend}
+          canAscend={canAscend}
           onLevelUp={this.levelUp}
           onPageChange={this.onPageChange}
           onHomePress={this.openHome}
@@ -474,6 +472,9 @@ export default class Screen extends React.Component {
         rank={rank}
         level={level}
         mana={mana}
+        manaForLevel={manaForLevel}
+        canTranscend={canTranscend}
+        canAscend={canAscend}
         isUnlocking={isUnlocking}
         onLevelUp={this.levelUp}
         openMindTransmutations={this.openMindTransmutations}
@@ -506,6 +507,19 @@ function categoryFor(transmutation) {
     case 'Yoga':
       return 1;
   }
+}
+
+function alchemistState(alchemist) {
+  return {
+    rank: normalizeRank(alchemist.rank),
+    level: alchemist.level,
+    mana: alchemist.mana,
+    manaForLevel: alchemist.mana_for_leveling,
+    mindUnlock: alchemist.mind_unlock,
+    bodyUnlock: alchemist.body_unlock,
+    canTranscend: alchemist.can_transcend,
+    canAscend: alchemist.can_ascend
+  };
 }
 
 function normalizeRank(rank) {

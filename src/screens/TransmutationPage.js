@@ -132,6 +132,7 @@ export default class TransmutationPage extends React.Component {
             source={require('src/images/transmutation/complete.png')}
           />
         );
+      default: return null;
     }
   }
 

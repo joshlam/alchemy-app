@@ -20,7 +20,6 @@ export default class Screen extends React.Component {
       username: '',
       password: '',
       displayLoginError: false,
-      screen: 'Login',
       signedIn: false,
       levelingUp: false,
       unlocking: false,
@@ -53,8 +52,6 @@ export default class Screen extends React.Component {
   }
 
   componentDidMount() {
-    loopSound('login', 'mp3');
-
     this.retrieveLogin();
   }
 
@@ -64,8 +61,14 @@ export default class Screen extends React.Component {
       const password = await AsyncStorage.getItem('@Alchemy:password');
 
       this.setState({username, password});
-    } catch (error) {
 
+      if (username && password) {
+        this.handleSignIn();
+      } else {
+        this.setState({screen: 'Login'});
+      }
+    } catch (error) {
+      this.setState({screen: 'Login'});
     }
   }
 
@@ -100,7 +103,7 @@ export default class Screen extends React.Component {
         if (!json.auth_token) {
           playSound('login_incorrect');
 
-          this.setState({displayLoginError: true});
+          this.setState({displayLoginError: true, screen: 'Login'});
 
           return;
         }
@@ -123,7 +126,7 @@ export default class Screen extends React.Component {
         });
 
         this.storeLogin(username, password);
-      });
+      }).catch(() => this.setState({screen: 'Login'}));
   }
 
   fetchAlchemist() {
@@ -339,12 +342,14 @@ export default class Screen extends React.Component {
   }
 
   render() {
-    if (!this.state.signedIn) {
+    const {screen, username, password, displayLoginError} = this.state;
+
+    if (screen === 'Login') {
       return (
         <Login
-          username={this.state.username}
-          password={this.state.password}
-          displayLoginError={this.state.displayLoginError}
+          username={username}
+          password={password}
+          displayLoginError={displayLoginError}
           onChangeUsername={this.handleUsernameChange}
           onChangePassword={this.handlePasswordChange}
           onSignIn={this.handleSignIn}
@@ -359,7 +364,6 @@ export default class Screen extends React.Component {
       manaForLevel,
       canTranscend,
       canAscend,
-      screen,
       mindUnlock,
       bodyUnlock,
       Gratitude,
@@ -383,6 +387,24 @@ export default class Screen extends React.Component {
     } = this.state;
 
     const isUnlocking = mindUnlock || bodyUnlock;
+
+    if (screen === 'Home') {
+      return (
+        <Home
+          alchemistFetched={this.state.alchemistFetched}
+          rank={rank}
+          level={level}
+          mana={mana}
+          manaForLevel={manaForLevel}
+          canTranscend={canTranscend}
+          canAscend={canAscend}
+          isUnlocking={isUnlocking}
+          onLevelUp={this.levelUp}
+          openMindTransmutations={this.openMindTransmutations}
+          openBodyTransmutations={this.openBodyTransmutations}
+        />
+      );
+    }
 
     if (screen === 'Transmutations' ) {
       return (
@@ -466,21 +488,7 @@ export default class Screen extends React.Component {
       );
     }
 
-    return (
-      <Home
-        alchemistFetched={this.state.alchemistFetched}
-        rank={rank}
-        level={level}
-        mana={mana}
-        manaForLevel={manaForLevel}
-        canTranscend={canTranscend}
-        canAscend={canAscend}
-        isUnlocking={isUnlocking}
-        onLevelUp={this.levelUp}
-        openMindTransmutations={this.openMindTransmutations}
-        openBodyTransmutations={this.openBodyTransmutations}
-      />
-    );
+    return null;
   }
 }
 

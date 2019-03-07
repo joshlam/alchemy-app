@@ -9,6 +9,7 @@ import {
 
 import { fontSize } from 'src/lib/sizes';
 import withSharedStyles from 'src/lib/styles';
+import { loopSound } from 'src/services/sound';
 
 const styles = withSharedStyles({
   loginScreen: {
@@ -58,49 +59,57 @@ const LoginError = ({display}) => {
   return <Text style={styles.loginError}>Invalid credentials</Text>;
 };
 
-export default ({
-  username,
-  password,
-  displayLoginError,
-  onChangeUsername,
-  onChangePassword,
-  onSignIn
-}) => {
-  return (
-    <ImageBackground
-      style={styles.backgroundImage}
-      source={require('src/images/login.png')}
-    >
-      <View style={styles.loginScreen}>
-        <LoginError display={displayLoginError} />
-        <TextInput
-          style={[
-            styles.loginForm,
-            styles.loginInput,
-            styles.usernameInput
-          ]}
-          placeholder={'Username'}
-          value={username}
-          onChangeText={onChangeUsername}
-        />
-        <TextInput
-          style={[
-            styles.loginForm,
-            styles.loginInput,
-            styles.passwordInput
-          ]}
-          placeholder={'Password'}
-          value={password}
-          secureTextEntry={true}
-          onChangeText={onChangePassword}
-        />
-        <TouchableOpacity
-          style={[styles.loginForm, styles.signInButton]}
-          onPress={onSignIn}
-        >
-          <Text style={styles.signInButtonText}>Sign in</Text>
-        </TouchableOpacity>
-      </View>
-    </ImageBackground>
-  );
-};
+export default class Login extends React.Component {
+  componentDidMount() {
+    loopSound('login', 'mp3');
+  }
+
+  render() {
+    const {
+      username,
+      password,
+      displayLoginError,
+      onChangeUsername,
+      onChangePassword,
+      onSignIn
+    } = this.props;
+
+    return (
+      <ImageBackground
+        style={styles.backgroundImage}
+        source={require('src/images/login.png')}
+      >
+        <View style={styles.loginScreen}>
+          <LoginError display={displayLoginError} />
+          <TextInput
+            style={[
+              styles.loginForm,
+              styles.loginInput,
+              styles.usernameInput
+            ]}
+            placeholder={'Username'}
+            value={username}
+            onChangeText={onChangeUsername}
+          />
+          <TextInput
+            style={[
+              styles.loginForm,
+              styles.loginInput,
+              styles.passwordInput
+            ]}
+            placeholder={'Password'}
+            value={password}
+            secureTextEntry={true}
+            onChangeText={onChangePassword}
+          />
+          <TouchableOpacity
+            style={[styles.loginForm, styles.signInButton]}
+            onPress={onSignIn}
+          >
+            <Text style={styles.signInButtonText}>Sign in</Text>
+          </TouchableOpacity>
+        </View>
+      </ImageBackground>
+    );
+  }
+}
